@@ -1,0 +1,542 @@
+
+
+body{
+  font-family: 'Kanit', sans-serif;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  background-color: rgb(240, 240, 240);
+  }
+
+ul {
+    list-style: none;
+  }
+
+img {
+    max-width: 100%;
+    height: auto;
+  }
+
+a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+/*--------------------------------------------------------------------------
+--------------------------- COMEÇO do HEADER--------------------------------
+----------------------------------------------------------------------------*/
+
+.container {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+header{
+    background-color: rgb(5, 129, 88);
+}
+
+header nav{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header nav .nav-titulo {
+
+   display: flex;
+   align-items: center;
+
+  }
+
+  header nav .nav-titulo a {
+    font-size: 4.5vh;
+   font-weight: bold;
+   margin-left: 5vw;
+
+  }
+
+   button#abre-menu{
+    
+    margin-left: 60vw;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10vw;
+  }
+
+  button#fecha-menu{
+    
+    margin-top: 10vh;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  header nav .wrapper{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 30%;
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    text-align: center;
+    z-index: 999;
+    background-color: rgb(5, 129, 88);
+    color:aliceblue;
+    border:solid 5px #2b2b2b;
+
+  }
+
+header nav .wrapper.menu-abre{
+  right: 0;
+  padding-top: 35vh;
+}
+
+header nav .wrapper nav {
+  max-width: 100%;
+  max-height:100% ;
+  
+}
+
+header nav .wrapper nav ul{
+  margin-top: 8vh;
+  margin-left: 2vw;
+  padding-left: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  
+}
+
+
+header nav .wrapper ul li a#links{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.5vh;
+  line-height: 9vh;
+  
+}
+
+header nav .wrapper ul li a#nome{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.5vh;
+  line-height: 9vh;
+  
+}
+
+header nav .wrapper ul li a#links:hover{
+  color: #2b2b2b;
+}
+
+header nav .wrapper ul li {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 5vh;
+  line-height: 15px;
+  width: 75%;
+  height: 75%;
+  
+}
+
+header nav .wrapper nav ul li.redes-sociais p {
+  font-size: 2.5vh;
+  line-height: 3vh;
+  color:#2b2b2b;
+}
+
+header nav .wrapper nav ul li.redes-sociais .logos{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+header nav .wrapper nav ul li.redes-sociais .logos a img{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+header nav .wrapper nav ul li.redes-sociais .logos a p{
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    color:#2b2b2b;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 2vh;
+  }
+  
+  @media (max-width: 1199.98px){
+  
+    button#abre-menu{
+      margin-left: 50vw;
+    }
+   }
+   @media (max-width: 991.98px){
+  
+    button#abre-menu{
+      margin-left: 35vw;
+    }
+    header nav .wrapper{
+      width: 100%;
+    }
+    header nav .wrapper nav ul{
+    margin-left: 10vw;
+    }
+   
+  }
+  
+  @media (max-width: 767.98px)
+  {
+  button#abre-menu{
+    margin-left: 20vw;
+  }
+  }
+  @media (max-width: 575.98px)
+  {  
+  
+  button#abre-menu{
+    margin-right:5vw;
+  }
+  }
+
+/*--------------------------------------------------------------------------
+--------------------------- FIM do HEADER-----------------------------------
+----------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------
+--------------------------- COMEÇO DAS iMAGENS-----------------------------------
+----------------------------------------------------------------------------*/
+  main{
+    margin: 2vh 5vw;
+    padding: 0 2vh;
+    background-color: rgba(109, 236, 158, 0.514);
+    border:  3px solid transparent;
+    height: 90%;
+    border-radius: 3vw;
+    padding-bottom: 5%;
+    margin-bottom: 1%;
+  }
+  
+  main .mostrando{
+    align-items: center;
+    border-bottom: 1px solid var(--light-background-color)
+  }
+
+  main .mostrando > img
+  {
+    height: 50%;
+    width: 50%;
+    margin-left: 24%;
+    border:  3px solid transparent;
+    border-radius: 6vw;
+  }
+  
+  main .mostrando > img#princ{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    object-fit: cover;
+    justify-content: center;
+  }
+
+
+  main .mostrando #op-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main .mostrando #op-img img{
+    width: 10vw;
+    height: 12vh;
+    object-fit: cover;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+
+  }
+
+  main .mostrando #op-img img[data-selected = "true"]
+  {
+    border: 2px solid #2d2d2d;
+
+  }
+  
+  @media (max-width: 1199.98px){
+    main .mostrando #op-img img{
+      width: 25vw;
+      height: 10vh;
+   }
+
+   main .mostrando > img
+   {
+     height: 90%;
+     width: 90%;
+     margin-left: 5%;
+     border:  3px solid transparent;
+     border-radius: 10vh;
+   }
+  }
+/*----------------------------------------------------------------------
+---------------------------FIM DAS IMAGENS PRINCIPAIS-------------------
+------------------------------------------------------------------------*/
+
+  /*_-------------------------------------------------------------------
+  ------------------COMEÇO DO CATÁLOGO DE PERDIDOS----------------------
+  ----------------------------------------------------------------------*/
+
+
+  main .catalogo-perdidos{
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+  }
+
+  main .catalogo-perdidos .filtro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color:  rgb(14, 68, 50);
+    border: 2px solid #2b2b2b;
+    border-radius: 5px;
+    
+  }
+
+
+
+  main .catalogo-perdidos .filtro input[id="Todos"]:checked ~ .op-selc{
+    transform: translateX(-100%);
+  }
+  main .catalogo-perdidos .filtro input[id="Gatos"]:checked ~ .op-selc{
+    transform: translateX(0%);
+  }
+  main .catalogo-perdidos .filtro input[id="Cachorros"]:checked ~ .op-selc{
+    transform: translateX(100%);
+  }
+
+  main .catalogo-perdidos .filtro .op-selc{
+    position: absolute;
+    display: flex;
+    height: 2px;
+    z-index: 1;
+    width: calc(100% / 3);
+    background-color: rgb(5, 129, 88);
+    transition: 0.25s ease-out;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    bottom: -8px;
+  }
+
+  main .catalogo-perdidos .filtro input[type="radio"]{
+    position: absolute;
+    visibility: hidden;
+    display: none;
+  }
+
+  main .catalogo-perdidos .filtro input[type="radio"]:checked + label{
+    background-color: rgb(5, 129, 88);
+    border: 5px solid transparent;
+    border-radius: 8px;
+  }
+  
+  main .catalogo-perdidos .filtro input[type="radio"]:checked + label > .qntd {
+    background-color: whitesmoke;
+  }
+
+  main .catalogo-perdidos .filtro label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vw;
+    width: calc(100% / 3);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 3vh;
+    line-height: 5vh;
+    transition: color 0.15s ease-in;
+    color: whitesmoke;
+  }
+
+  main .catalogo-perdidos .filtro label .qntd{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    margin-left: 3vw;
+    color: #2b2b2b;
+  }
+
+  main .catalogo-perdidos .catalogo{
+    display: grid;
+    margin-top: 8vh;
+    grid-template-columns: repeat( 3, 1fr);
+    row-gap: 5vh;
+    column-gap: 5vh;
+    
+  }
+
+  main .catalogo-perdidos .catalogo .oAmiguin
+  {
+    background-color: rgb(5, 129, 88);
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+  }
+
+  main .catalogo-perdidos .catalogo .oAmiguin .descricao{
+    color: aliceblue;
+  }
+  
+
+  main .catalogo-perdidos .catalogo .oAmiguin img{
+    width: 90%;
+    height: 295px;
+    object-fit: cover;
+    border-radius: 20px 20px;
+    margin: 5%;
+  }
+
+  main .catalogo-perdidos .catalogo .oAmiguin .descricao .nomeP{
+    font-size: 5vh;
+    font-weight: bold;
+  }
+  
+  
+  @media (max-width: 767.98px) {
+    main .catalogo-perdidos .catalogo {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 1vh;
+      column-gap: 1vh;
+      margin-top: 3vh;
+    }
+      main .catalogo-perdidos .filtro label{
+        font-size: 3vw;
+        line-height: 3vh;
+  
+      }
+      main .catalogo-perdidos{
+        margin-top: 1vh;
+        margin-bottom: 2vh;
+      }
+      main .catalogo-perdidos .filtro label .qntd{
+        line-height: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        margin-left: 3vw;
+        color: #2b2b2b;
+      }
+    }
+  
+  @media (max-width: 575.98px) {
+    main .catalogo-perdidos .filtro label .qntd{
+      line-height: 10px;
+      width: 25px;
+      height: 25px;
+      border-radius: 20px;
+      margin-left: 3vw;
+      color: #2b2b2b;
+    }
+    
+    
+    main .catalogo-perdidos .catalogo {
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 1vh;
+      column-gap: 1vh;
+
+    }
+    
+
+    main .catalogo-perdidos .filtro label{
+      font-size: 3vw;
+      line-height: 3vh;
+
+    }
+    
+
+  }
+
+
+  /*----------------------------------------------------------------------------
+  ------------------------------ COMEÇO DO FOOTER-------------------------------
+  ----------------------------------------------------------------------------*/
+
+.jumbotron {
+  background-color: #535050;
+  color: #0e0d0d;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbotron h4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 0;
+  color: aliceblue;
+}
+
+.jumbotron .links-footer a:hover{
+  color:  rgb(5, 129, 88);
+}
+
+.jumbotron .links-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+}
+
+.jumbotron .links-footer img{
+  margin-left: 1.25vw;
+}
+
+.jumbotron .links-footer h5{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 3vh;
+}
+
+.jumbotron footer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 3vh;
+  color: aliceblue;
+}
+
+@media (max-width: 767.98px) {
+  .jumbotron h4{
+    margin: 2vh 0;
+  }
+  }
+
+@media (max-width: 575.98px) {
+  .jumbotron .links-footer h5{
+    font-size: 2vh;
+  }
+
+  .jumbotron {
+    margin-top: 3vh;
+  }
+
+  .jumbotron h4{
+    margin: 3vh 0;
+  }
+}

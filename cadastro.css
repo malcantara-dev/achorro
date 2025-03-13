@@ -1,0 +1,364 @@
+body{
+  font-family: 'Kanit', sans-serif;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  background-color: rgb(240, 240, 240);
+  }
+
+ul {
+    list-style: none;
+  }
+
+img {
+    max-width: 100%;
+    height: 100%;
+  }
+
+a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+/*--------------------------------------------------------------------------
+--------------------------- COMEÇO do HEADER--------------------------------
+----------------------------------------------------------------------------*/
+
+.container {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+header{
+    background-color: rgb(5, 129, 88);
+}
+
+header nav{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header nav .nav-titulo {
+
+   display: flex;
+   align-items: center;
+
+  }
+
+  header nav .nav-titulo a {
+    font-size: 4.5vh;
+   font-weight: bold;
+   margin-left: 5vw;
+
+  }
+
+   button#abre-menu{
+    
+    margin-left: 60vw;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10vw;
+  }
+
+  button#fecha-menu{
+    
+    margin-top: 10vh;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  header nav .wrapper{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: 30%;
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    text-align: center;
+    z-index: 999;
+    background-color: rgb(5, 129, 88);
+    color:aliceblue;
+    border:solid 5px #2b2b2b;
+
+  }
+
+header nav .wrapper.menu-abre{
+  right: 0;
+  padding-top: 35vh;
+}
+
+header nav .wrapper nav {
+  max-width: 100%;
+  max-height:100% ;
+  
+}
+
+header nav .wrapper nav ul{
+  margin-top: 8vh;
+  margin-left: 2vw;
+  padding-left: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  
+}
+
+
+header nav .wrapper ul li a#links{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.5vh;
+  line-height: 9vh;
+  
+}
+
+header nav .wrapper ul li a#links:hover{
+  color: #2b2b2b;
+}
+
+header nav .wrapper ul li {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 5vh;
+  line-height: 15px;
+  width: 75%;
+  height: 75%;
+  
+}
+
+header nav .wrapper nav ul li.redes-sociais p {
+  font-size: 2.5vh;
+  line-height: 3vh;
+  color:#2b2b2b;
+}
+
+header nav .wrapper nav ul li.redes-sociais .logos{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+header nav .wrapper nav ul li.redes-sociais .logos a img{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+header nav .wrapper nav ul li.redes-sociais .logos a p{
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    color:#2b2b2b;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 2vh;
+  }
+  
+  @media (max-width: 1199.98px){
+  
+    button#abre-menu{
+      margin-left: 50vw;
+    }
+   }
+   @media (max-width: 991.98px){
+  
+    button#abre-menu{
+      margin-left: 35vw;
+    }
+    header nav .wrapper{
+      width: 100%;
+    }
+    header nav .wrapper nav ul{
+    margin-left: 10vw;
+    }
+   
+  }
+  
+  @media (max-width: 767.98px)
+  {
+  button#abre-menu{
+    margin-left: 20vw;
+  }
+  }
+  @media (max-width: 575.98px)
+  {  
+  
+  button#abre-menu{
+    margin-right:5vw;
+  }
+  }
+
+/*--------------------------------------------------------------------------
+--------------------------- FIM do HEADER-----------------------------------
+----------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------
+--------------------------- COMEÇO do FORMULARIO----------------------------
+----------------------------------------------------------------------------*/
+
+main{
+  margin: 5vh 5vw;
+}
+
+main .cadastro{
+  position: fixed;
+    top: 1vh;
+    right: -100%;
+    height: 97%;
+    width: 90%;
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    text-align: center;
+    z-index: 999;
+    background-color: rgb(3, 75, 51);
+    color:aliceblue;
+    border:solid 1vw #2b2b2b;
+    
+}
+
+main .cadastro.cabre{
+  right: 5%;
+  padding: 0 10vh;
+
+}
+
+.form-row {
+  width: 800vh;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-row .item {
+flex: 1 0 200vh;
+}
+
+@media (max-width: 1024px) {
+  .form-row {
+      width: 600vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+      width: 400vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row {
+      width: 200vh;
+  }
+}
+main .cadastro .form-row{
+  width: 100%;
+}
+
+#fimCadastro{
+margin-top: 2vw;
+font-size: 1em;
+position: relative;
+}
+
+/*--------------------------------------------------------------------------
+------------------------------ FIM do FORMULARIO----------------------------
+----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------
+------------------------------ COMEÇO DO FOOTER-------------------------------
+----------------------------------------------------------------------------*/
+
+.jumbotron {
+  background-color: #535050;
+  color: #0e0d0d;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbotron h4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 0;
+  color: aliceblue;
+}
+
+.jumbotron .links-footer a:hover{
+  color:  rgb(5, 129, 88);
+}
+
+.jumbotron .links-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+}
+
+.jumbotron .links-footer img{
+  margin-left: 1.25vw;
+}
+
+.jumbotron .links-footer h5{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 3vh;
+}
+
+.jumbotron footer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: aliceblue;
+  margin-bottom: 10%;
+}
+
+@media (max-width: 1024px) {
+  .form-row {
+      width: 600vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+      width: 400vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row {
+      width: 200vh;
+  }
+}
+main .cadastro .form-row{
+  width: 100%;
+}
+
+  .jumbotron {
+    margin-top: 50vh;
+  }
+
+  .jumbotron h4{
+    margin: 3vh 0;
+  }
+
+/*--------------------------------------------------------------------------
+------------------------------ FIM do FOOTER--------------------------------
+----------------------------------------------------------------------------*/
