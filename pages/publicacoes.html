@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achorro - Publicações</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/publicacoes.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+    <a href="../pages/index.html">
+        <div class="logo-icon">
+            <img src="../assets/icons/paw.png" alt="|">
+        </div>
+        <div class="logo-text">
+            <h1 class="logo-title">ACHORRO</h1>
+            <p class="logo-subtitle">ache seu pet!</p>
+        </div>
+    </a>
+</div>
+        <nav>
+            <a href="../pages/cadastro.html">Cadastro</a>
+            <a href="../pages/publicacoes.html" class="active">Publicações</a>
+            <a href="../pages/nova-postagem.html"><button>Criar nova postagem</button></a>
+        </nav>
+    </header>
+    
+    <section class="publicacoes-header">
+        <h1>Todas as Publicações</h1>
+        <p>Ajude-nos a encontrar esses amiguinhos e devolvê-los para suas famílias</p>
+        
+        <div class="filtros">
+            <div class="filtro-grupo">
+                <label for="tipo-pet">Tipo de Pet:</label>
+                <select id="tipo-pet">
+                    <option value="todos">Todos</option>
+                    <option value="cachorro">Cachorro</option>
+                    <option value="gato">Gato</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            
+            <div class="filtro-grupo">
+                <label for="localizacao">Localização:</label>
+                <select id="localizacao">
+                    <option value="todos">Todas</option>
+                    <option value="zona-norte">Zona Norte</option>
+                    <option value="zona-sul">Zona Sul</option>
+                    <option value="zona-leste">Zona Leste</option>
+                    <option value="zona-oeste">Zona Oeste</option>
+                    <option value="centro">Centro</option>
+                </select>
+            </div>
+            
+            <div class="filtro-grupo">
+                <label for="data">Data:</label>
+                <select id="data">
+                    <option value="todos">Qualquer data</option>
+                    <option value="hoje">Hoje</option>
+                    <option value="semana">Esta semana</option>
+                    <option value="mes">Este mês</option>
+                </select>
+            </div>
+            
+            <button class="btn-filtrar">Filtrar</button>
+        </div>
+    </section>
+    
+    <section class="publicacoes-grid">
+        <a href="../pages/publicacao-pet.html?pet=oreo" class="publicacao-card">
+            <div class="publicacao-imagem">
+                <img src="../assets/images/pet1.jpg" alt="Oreo">
+                <span class="status perdido">Perdido</span>
+            </div>
+            <div class="publicacao-info">
+                <h3>Oreo</h3>
+                <p class="raca">Pinscher</p>
+                <p class="local"><strong>Local:</strong> Zona Sul - Próximo ao Parque Ibirapuera</p>
+                <p class="data"><strong>Desaparecido em:</strong> 15/03/2023</p>
+            </div>
+        </a>
+        
+        <a href="../pages/publicacao-pet.html?pet=lorena" class="publicacao-card">
+            <div class="publicacao-imagem">
+                <img src="../assets/images/pet2.jpg" alt="Lorena">
+                <span class="status perdido">Perdido</span>
+            </div>
+            <div class="publicacao-info">
+                <h3>Lorena</h3>
+                <p class="raca">Golden Retriever</p>
+                <p class="local"><strong>Local:</strong> Zona Oeste - Próximo ao Shopping Eldorado</p>
+                <p class="data"><strong>Desaparecido em:</strong> 22/03/2023</p>
+            </div>
+        </a>
+        
+        <a href="../pages/publicacao-pet.html?pet=max" class="publicacao-card">
+            <div class="publicacao-imagem">
+                <img src="../assets/images/pet3.jpg" alt="Max">
+                <span class="status encontrado">Encontrado</span>
+            </div>
+            <div class="publicacao-info">
+                <h3>Max</h3>
+                <p class="raca">Pug</p>
+                <p class="local"><strong>Local:</strong> Zona Norte - Próximo ao Parque da Juventude</p>
+                <p class="data"><strong>Encontrado em:</strong> 10/08/2023</p>
+            </div>
+        </a>
+        
+        <a href="../pages/publicacao-pet.html?pet=mel" class="publicacao-card">
+            <div class="publicacao-imagem">
+                <img src="../assets/images/pet4.jpg" alt="Mel">
+                <span class="status perdido">Perdido</span>
+            </div>
+            <div class="publicacao-info">
+                <h3>Mel</h3>
+                <p class="raca">Dálmata</p>
+                <p class="local"><strong>Local:</strong> Centro - Próximo à Praça da República</p>
+                <p class="data"><strong>Desaparecido em:</strong> 05/05/2023</p>
+            </div>
+        </a>
+        
+        <a href="../pages/publicacao-pet.html?pet=nino" class="publicacao-card">
+            <div class="publicacao-imagem">
+                <img src="../assets/images/pet5.jpg" alt="Nino">
+                <span class="status perdido">Perdido</span>
+            </div>
+            <div class="publicacao-info">
+                <h3>Nino</h3>
+                <p class="raca">Pastor Alemão</p>
+                <p class="local"><strong>Local:</strong> Zona Leste - Próximo ao Shopping Anália Franco</p>
+                <p class="data"><strong>Desaparecido em:</strong> 18/09/2023</p>
+            </div>
+        </a>
+
+        <a href="../pages/publicacao-pet.html?pet=luna" class="publicacao-card">
+            <div class="publicacao-imagem">
+                <img src="../assets/images/pet6.jpg" alt="Luna">
+                <span class="status perdido">Perdido</span>
+            </div>
+            <div class="publicacao-info">
+                <h3>Luna</h3>
+                <p class="raca">Golden Retriever</p>
+                <p class="local"><strong>Local:</strong> Zona Sul - Próximo ao Estádio Morumbi</p>
+                <p class="data"><strong>Desaparecido em:</strong> 18/09/2023</p>
+            </div>
+        </a>
+
+        <a href="../pages/publicacao-pet.html?pet=thor" class="publicacao-card">
+            <div class="publicacao-imagem">
+                <img src="../assets/images/pet7.jpg" alt="Thor">
+                <span class="status perdido">Perdido</span>
+            </div>
+            <div class="publicacao-info">
+                <h3>Thor</h3>
+                <p class="raca">Corgi</p>
+                <p class="local"><strong>Local:</strong> Zona Norte - Próximo a estação da Sé</p>
+                <p class="data"><strong>Desaparecido em:</strong> 17/06/2023</p>
+            </div>
+        </a>
+        
+        <!-- Mais publicações podem ser adicionadas aqui -->
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="../pages/termos.html">Termos de Uso</a>
+            <a href="../pages/sobre.html">Sobre nós</a>
+            <a href="../pages/contato.html">Contato</a>
+        </div>
+    </footer>
+</body>
+</html>
+

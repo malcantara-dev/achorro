@@ -1,0 +1,183 @@
+/* Estilos específicos para a página de cadastro */
+.cadastro-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .cadastro-card {
+    flex: 1;
+    padding: 40px;
+  }
+  
+  .cadastro-image {
+    flex: 1;
+    position: relative;
+    display: none; /* Inicialmente oculto em telas menores */
+  }
+  
+  .cadastro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 121, 107, 0.8); /* #00796B com transparência */
+    color: white;
+    padding: 20px;
+  }
+  
+  .image-overlay h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  h2 {
+    color: #00796b;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .cadastro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .form-group input:focus {
+    border-color: #00796b;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 121, 107, 0.2);
+  }
+  
+  .checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .checkbox-group input {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .checkbox-group label {
+    font-weight: normal;
+  }
+  
+  .checkbox-group a {
+    color: #00796b;
+    text-decoration: none;
+  }
+  
+  .cadastro-button {
+    background: #00796b;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cadastro-button:hover {
+    background: #005a4f;
+  }
+  
+  .login-link {
+    margin-top: 20px;
+    color: #666;
+  }
+  
+  .login-link a {
+    color: #00796b;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Estilo para o input de arquivo personalizado */
+  .file-input {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .file-button {
+    background: #e0e0e0;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .file-name {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* Estilo para link ativo no menu */
+  nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  /* Responsividade */
+  @media (min-width: 768px) {
+    .cadastro-image {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .cadastro-container {
+      flex-direction: column;
+      margin: 20px;
+    }
+  
+    .cadastro-card {
+      padding: 20px;
+    }
+  }
+  
+  

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achorro - Ache seu Pet!</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!-- Swiper.js para deixar o carrossel funcional -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <div class="logo-icon">
+                    <img src="../assets/icons/paw.png" alt="|">
+                </div>
+                <div class="logo-text">
+                    <h1 class="logo-title">ACHORRO</h1>
+                    <p class="logo-subtitle">ache seu pet!</p>
+                </div>
+            </a>
+        </div>
+        <nav>
+            <a href="../pages/cadastro.html">Cadastro</a>
+            <a href="../pages/publicacoes.html">Publicações</a>
+            <a href="../pages/nova-postagem.html"><button>Criar nova postagem</button></a>
+        </nav>
+    </header>
+    
+    <section class="carousel">
+        <h2>Ajude-nos a encontrá-los!</h2>
+        
+        <!-- Swiper container -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide pet">
+                    <a href="../pages/publicacao-pet.html?pet=oreo">
+                        <img src="../assets/images/pet1.jpg" alt="Oreo">
+                        <p>Oreo</p>
+                    </a>
+                </div>
+                <div class="swiper-slide pet">
+                    <a href="../pages/publicacao-pet.html?pet=lorena">
+                        <img src="../assets/images/pet2.jpg" alt="Lorena">
+                        <p>Lorena</p>
+                    </a>
+                </div>
+                <div class="swiper-slide pet">
+                    <a href="../pages/publicacao-pet.html?pet=mel">
+                        <img src="../assets/images/pet4.jpg" alt="Mel">
+                        <p>Mel</p>
+                    </a>
+                </div>
+                <div class="swiper-slide pet">
+                    <a href="../pages/publicacao-pet.html?pet=nino">
+                        <img src="../assets/images/pet5.jpg" alt="Nino">
+                        <p>Nino</p>
+                    </a>
+                </div>
+                <div class="swiper-slide pet">
+                    <a href="../pages/publicacao-pet.html?pet=luna">
+                        <img src="../assets/images/pet6.jpg" alt="Luna">
+                        <p>Luna</p>
+                    </a>
+                </div>
+                <div class="swiper-slide pet">
+                    <a href="../pages/publicacao-pet.html?pet=thor">
+                        <img src="../assets/images/pet7.jpg" alt="Thor">
+                        <p>Thor</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <!-- Botões de navegação -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </section>
+    
+    <section class="stats">
+        <div class="stat">
+            <strong id="counter1">0</strong>
+            <p>pessoas na comunidade!</p>
+        </div>
+        <div class="stat">
+            <strong id="counter2">0</strong>
+            <p>pets aos seus donos!</p>
+        </div>
+    </section>
+    
+    <section class="join">
+        <div class="join-content">
+            <div class="join-form">
+                <h3>Junte-se à nós agora mesmo!</h3>
+                <form>
+                    <input type="email" placeholder="Email para cadastro">
+                    <input type="password" placeholder="Senha">
+                    <button>Entrar para a comunidade!</button>
+                </form>
+            </div>
+            <div class="join-image">
+                <img src="../assets/images/juntar.png" alt="Cachorro estiloso">
+            </div>
+        </div>
+    </section>
+    
+<section class="titulo-comentario">
+    <h3>Comentários da Comunidade</h3>
+</section>
+
+    <section class="comments">
+        <div class="comment">
+            "Ótimo site, simples de usar e uma comunidade bem unida!"
+            <div class="profile">
+                <img src="../assets/images/perfil1.jpg" alt="Foto de perfil de José da Silva Pereira">
+                <div class="info">
+                    <div class="name">José da Silva Pereira</div>
+                    <div>Membro há 2 meses</div>
+                </div>
+            </div>
+        </div>
+        <div class="comment">
+            "Encontrei meu Pet depois de 2 dias!"
+            <div class="profile">
+                <img src="../assets/images/perfil2.jpg" alt="Foto de perfil de Eloisa Lopes">
+                <div class="info">
+                    <div class="name">Eloisa Lopes</div>
+                    <div>Membro há 3 semanas</div>
+                </div>
+            </div>
+        </div>
+        <div class="comment">
+            "Sempre gosto de ajudar por aqui! É uma satisfação enorme."
+            <div class="profile">
+                <img src="../assets/images/perfil3.jpg" alt="Foto de perfil de João Antônio">
+                <div class="info">
+                    <div class="name">João Antônio</div>
+                    <div>Membro há 11 meses</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="../pages/termos.html">Termos de Uso</a>
+            <a href="../pages/sobre.html">Sobre nós</a>
+            <a href="../pages/contato.html">Contato</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../scripts/script.js"></script>
+</body>
+</html>
+

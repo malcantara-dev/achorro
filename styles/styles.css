@@ -1,0 +1,626 @@
+/* Estilos gerais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Cabeçalho Responsivo */
+header {
+  background: #159281;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px; /* Reduzido de 15px para 10px */
+  flex-wrap: wrap;
+}
+
+/* Construção da logo */
+.logo {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+}
+
+.logo-text {
+  text-align: start;
+  margin: 0px 0px 0px 1.2rem; /* Reduzido de 2rem para 1.2rem */
+  padding: 0px;
+}
+
+.logo img {
+  padding-top: 2.2rem;
+  margin-right: -3rem;
+  max-width: 115px; /* Reduzido de 3.4rem para 2rem */
+  height: auto;
+}
+
+.logo-title {
+  font-size: 2rem; /* Reduzido de 3rem para 2.2rem */
+  font-weight: bolder;
+  color: black;
+  margin: 0px 0px -.5rem 0px; /* Ajustado de -0.7rem para -0.5rem */
+  padding: 0px;
+}
+
+.logo-subtitle {
+  font-size: 1.2rem; /* Reduzido de 1.6rem para 1.2rem */
+  font-weight: bolder;
+  color: black;
+  margin: 0;
+  padding: 0px;
+}
+
+/* Adicionando estilos para o link do logo */
+.logo a {
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.logo a:hover {
+  transition: all 0.15s ease;
+  transform: scale(1.02);
+}
+
+/* navigation */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+nav a {
+  color: black;
+}
+
+nav a:hover {
+  transition: all 0.15s ease;
+  transform: scale(1.02);
+}
+
+nav button {
+  background: white;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease;
+}
+
+nav button:hover {
+  transform: scale(1.01);
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.4);
+}
+
+nav button:active {
+  transform: scale(0.99);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para o botão ativo */
+nav button.active {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+/* Estilo para link ativo no menu */
+nav a.active {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+/* carrossel */
+.carousel {
+  text-align: center;
+  padding: 20px;
+  background: #f5f5f5;
+  position: relative; /* Para posicionar os botões */
+}
+
+h2 {
+  color: black;
+}
+
+/* Ajuste do Swiper */
+.swiper {
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilização dos cards */
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #00796b;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  height: 100%;
+  flex: 1 0 auto;
+  box-sizing: border-box;
+}
+
+/* Links dentro dos slides */
+.swiper-slide a {
+  color: white;
+  display: block;
+  width: 100%;
+}
+
+/* Imagens dentro dos cards */
+.swiper-slide img {
+  max-width: 100% !important;
+  max-height: 80px !important;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+/* Botões de navegação */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #00796b !important;
+  font-weight: bold;
+  background: transparent;
+  border-radius: 50%;
+  padding: 20px;
+  width: 60px;
+  height: 60px;
+}
+
+/* Posicionando os botões */
+.swiper-button-next {
+  right: 25px !important; /* posiona mais perto dos cards */
+}
+
+.swiper-button-prev {
+  left: 25px !important; /* posiona mais perto dos cards */
+}
+
+/* Seção de Pets */
+.pets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pet {
+  background: #159281;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  width: 200px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pet:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pet p {
+  font-weight: bolder;
+}
+
+/* Estatísticas */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 30px 0;
+  font-size: 18px;
+}
+
+/* números */
+.stats .stat strong {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00796b;
+  display: block;
+  transition: all 1s ease-in-out;
+}
+
+/* texto abaixo do número */
+.stats .stat p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Seção de Inscrição */
+.join {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #159281;
+  color: white;
+  padding: 15px;
+  margin: 20px auto;
+  width: 60%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.join-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 4rem;
+}
+
+.join form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.join input,
+.join button {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.join button {
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+.join-image img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+}
+
+.titulo-comentario {
+  align-items: center;
+}
+
+/* Seção de Comentários */
+.comments {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+/* Container de comentários */
+.comments-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Estilo individual do comentário */
+.comment {
+  width: calc(33.333% - 200px); /* 3 colunas no desktop */
+  height: 5rem;
+  min-width: 250px; /* Evita que fiquem muito pequenos */
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Perfil dentro do comentário */
+.comment .profile {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.comment .profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment .profile .info {
+  font-size: 0.9em;
+  line-height: 1.2;
+}
+
+.comment .profile .name {
+  font-weight: bold;
+}
+
+/* Rodapé */
+footer {
+  background: #159281;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 10px;
+}
+
+/* Estilos para as páginas institucionais */
+.pagina-banner {
+  background-color: #00796b;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pagina-banner h1 {
+  font-size: 36px;
+  margin: 0 0 15px;
+}
+
+.pagina-banner p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pagina-container {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+/* 🌍 Responsividade 🌍 */
+@media (max-width: 1024px) {
+  /* 2 colunas de comentários */
+  .comment {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1 coluna para melhor leitura */
+  .comments-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .swiper {
+    width: 90%;
+  }
+
+  .comment {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .pets {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .join {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .join-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .join-image img {
+    margin: 0;
+  }
+
+  .cadastro-container {
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .cadastro-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-title {
+    font-size: 35px;
+  }
+  .logo-subtitle {
+    font-size: 20px;
+  }
+}
+
+/* Estilos específicos para a página de cadastro */
+.cadastro-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.cadastro-card {
+  flex: 1;
+  padding: 40px;
+}
+
+.cadastro-image {
+  flex: 1;
+  position: relative;
+  display: none; /* Inicialmente oculto em telas menores */
+}
+
+.cadastro-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 121, 107, 0.8); /* #00796B com transparência */
+  color: white;
+  padding: 20px;
+}
+
+.image-overlay h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  border-color: #00796b;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 121, 107, 0.2);
+}
+
+.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group input {
+  width: 18px;
+  height: 18px;
+}
+
+.checkbox-group label {
+  font-weight: normal;
+}
+
+.checkbox-group a {
+  color: #00796b;
+}
+
+.cadastro-button {
+  background: #00796b;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cadastro-button:hover {
+  background: #005a4f;
+}
+
+.login-link {
+  margin-top: 20px;
+  color: #666;
+}
+
+.login-link a {
+  color: #00796b;
+  font-weight: bold;
+}
+
+/* Estilo para o input de arquivo personalizado */
+.file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.file-button {
+  background: #e0e0e0;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.file-name {
+  color: #666;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .cadastro-image {
+    display: block;
+  }
+}
+
