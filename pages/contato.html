@@ -1,222 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Achorro - Contato</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/paginas.css">
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/paginas.css" />
     <script src="../scripts/faq.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="logo">
-    <a href="../pages/index.html">
-        <div class="logo-icon">
-            <img src="../assets/icons/paw.png" alt="|">
-        </div>
-        <div class="logo-text">
+      <div class="logo">
+        <a href="../index.html">
+          <div class="logo-icon">
+            <img src="../assets/icons/paw.png" alt="|" />
+          </div>
+          <div class="logo-text">
             <h1 class="logo-title">ACHORRO</h1>
             <p class="logo-subtitle">ache seu pet!</p>
-        </div>
-    </a>
-</div>
-        <nav>
-            <a href="../pages/cadastro.html">Cadastro</a>
-            <a href="../pages/publicacoes.html">Publicações</a>
-            <a href="../pages/nova-postagem.html"><button>Criar nova postagem</button></a>
-        </nav>
+          </div>
+        </a>
+      </div>
+      <nav>
+        <a href="../pages/cadastro.html">Cadastro</a>
+        <a href="../pages/publicacoes.html">Publicações</a>
+        <a href="../pages/nova-postagem.html"
+          ><button>Criar nova postagem</button></a
+        >
+      </nav>
     </header>
-    
-    <div class="pagina-banner contato-banner">
-        <div class="banner-conteudo">
-            <h1>Contato</h1>
-            <p>Estamos aqui para ajudar. Entre em contato conosco!</p>
-        </div>
-    </div>
-    
-    <div class="pagina-container">
-        <div class="contato-grid">
-            <div class="contato-info">
-                <section class="contato-secao">
-                    <h2>Informações de Contato</h2>
-                    <ul class="contato-lista">
-                        <li>
-                            <div class="contato-icone">📧</div>
-                            <div class="contato-detalhe">
-                                <h3>E-mail</h3>
-                                <p><a href="mailto:contato@achorro.com.br">contato@achorro.com.br</a></p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contato-icone">📞</div>
-                            <div class="contato-detalhe">
-                                <h3>Telefone</h3>
-                                <p>(11) 1234-5678</p>
-                                <p>Segunda a Sexta, 9h às 18h</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contato-icone">📍</div>
-                            <div class="contato-detalhe">
-                                <h3>Endereço</h3>
-                                <p>Rua dos Animais, 123</p>
-                                <p>São Paulo, SP - CEP 01234-567</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contato-icone">🌐</div>
-                            <div class="contato-detalhe">
-                                <h3>Redes Sociais</h3>
-                                <div class="redes-sociais">
-                                    <a href="#" class="rede-social">Facebook</a>
-                                    <a href="#" class="rede-social">Instagram</a>
-                                    <a href="#" class="rede-social">Twitter</a>
-                                    <a href="#" class="rede-social">YouTube</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-                
-                <section class="contato-secao">
-                    <h2>Horário de Atendimento</h2>
-                    <div class="horario-grid">
-                        <div class="horario-dia">Segunda-feira</div>
-                        <div class="horario-hora">9h às 18h</div>
-                        <div class="horario-dia">Terça-feira</div>
-                        <div class="horario-hora">9h às 18h</div>
-                        <div class="horario-dia">Quarta-feira</div>
-                        <div class="horario-hora">9h às 18h</div>
-                        <div class="horario-dia">Quinta-feira</div>
-                        <div class="horario-hora">9h às 18h</div>
-                        <div class="horario-dia">Sexta-feira</div>
-                        <div class="horario-hora">9h às 18h</div>
-                        <div class="horario-dia">Sábado</div>
-                        <div class="horario-hora">10h às 14h</div>
-                        <div class="horario-dia">Domingo</div>
-                        <div class="horario-hora">Fechado</div>
-                    </div>
-                </section>
-            </div>
-            
-            <div class="contato-formulario">
-                <h2>Envie-nos uma Mensagem</h2>
-                <form>
-                    <div class="form-grupo">
-                        <label for="nome">Nome completo</label>
-                        <input type="text" id="nome" placeholder="Digite seu nome completo" required>
-                    </div>
-                    
-                    <div class="form-grupo">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" placeholder="Digite seu e-mail" required>
-                    </div>
-                    
-                    <div class="form-grupo">
-                        <label for="telefone">Telefone</label>
-                        <input type="tel" id="telefone" placeholder="Digite seu telefone">
-                    </div>
-                    
-                    <div class="form-grupo">
-                        <label for="assunto">Assunto</label>
-                        <select id="assunto" required>
-                            <option value="" disabled selected>Selecione um assunto</option>
-                            <option value="duvida">Dúvida</option>
-                            <option value="sugestao">Sugestão</option>
-                            <option value="reclamacao">Reclamação</option>
-                            <option value="parceria">Proposta de Parceria</option>
-                            <option value="imprensa">Imprensa</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-grupo">
-                        <label for="mensagem">Mensagem</label>
-                        <textarea id="mensagem" placeholder="Digite sua mensagem" rows="6" required></textarea>
-                    </div>
-                    
-                    <div class="form-grupo checkbox-grupo">
-                        <input type="checkbox" id="termos-contato" required>
-                        <label for="termos-contato">Concordo com a <a href="../pages/termos.html">Política de Privacidade</a> do Achorro</label>
-                    </div>
-                    
-                    <button type="submit" class="btn-enviar">Enviar mensagem</button>
-                </form>
-            </div>
-        </div>
-        
-        <section class="faq-secao">
-            <h2>Perguntas Frequentes</h2>
-            
-            <div class="faq-lista">
-                <div class="faq-item">
-                    <div class="faq-pergunta">
-                        <h3>Como faço para cadastrar um pet perdido?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Para cadastrar um pet perdido, você precisa primeiro criar uma conta no Achorro. Após o login, clique no botão "Criar nova postagem" no menu superior, preencha todos os dados do seu pet, adicione fotos e informações sobre o desaparecimento, e finalize a publicação.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-pergunta">
-                        <h3>O serviço do Achorro é gratuito?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Sim, o Achorro é totalmente gratuito para cadastro de pets perdidos e encontrados. Não cobramos nenhuma taxa para publicação ou para entrar em contato com outros usuários. Nosso objetivo é ajudar a reunir pets com suas famílias.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-pergunta">
-                        <h3>Como posso ajudar a divulgar um pet perdido?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Você pode ajudar compartilhando a publicação do pet nas suas redes sociais, em grupos de bairro, ou diretamente com amigos e familiares. Quanto mais pessoas virem a publicação, maiores são as chances de encontrar o pet. Também é possível se voluntariar para ajudar nas buscas físicas.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-pergunta">
-                        <h3>Encontrei um pet perdido, o que devo fazer?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Se você encontrou um pet perdido, primeiro verifique se ele tem identificação como coleira com telefone ou microchip. Em seguida, você pode criar uma publicação no Achorro na categoria "Pet Encontrado", com fotos e informações sobre onde e quando o encontrou. Também recomendamos levar o animal a um veterinário para verificar se possui microchip.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-pergunta">
-                        <h3>Como posso me tornar um parceiro do Achorro?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-resposta">
-                        <p>Para se tornar um parceiro, entre em contato conosco através do formulário nesta página, selecionando "Proposta de Parceria" no campo assunto. Nossa equipe entrará em contato para discutir as possibilidades de parceria. Estamos sempre abertos a colaborar com clínicas veterinárias, pet shops, ONGs e outras organizações relacionadas a animais.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="mapa-secao">
-            <h2>Nossa Localização</h2>
-            <div class="mapa-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975790005467!2d-46.65429548502406!3d-23.56425868468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzUxLjMiUyA0NsKwMzknMDkuMCJX!5e0!3m2!1spt-BR!2sbr!4v1616593897156!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </section>
-    </div>
-    
-    <footer>
-        <div class="footer-links">
-            <a href="../pages/termos.html">Termos de Uso</a>
-            <a href="../pages/sobre.html">Sobre nós</a>
-            <a href="../pages/contato.html">Contato</a>
-        </div>
-    </footer>
-</body>
-</html>
 
+    <div class="pagina-banner contato-banner">
+      <div class="banner-conteudo">
+        <h1>Contato</h1>
+        <p>Estamos aqui para ajudar. Entre em contato conosco!</p>
+      </div>
+    </div>
+
+    <div class="pagina-container">
+      <div class="contato-grid">
+        <div class="contato-info">
+          <section class="contato-secao">
+            <h2>Informações de Contato</h2>
+            <ul class="contato-lista">
+              <li>
+                <div class="contato-icone">📧</div>
+                <div class="contato-detalhe">
+                  <h3>E-mail</h3>
+                  <p>
+                    <a href="mailto:contato@achorro.com.br"
+                      >contato@achorro.com.br</a
+                    >
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div class="contato-icone">📞</div>
+                <div class="contato-detalhe">
+                  <h3>Telefone</h3>
+                  <p>(11) 1234-5678</p>
+                  <p>Segunda a Sexta, 9h às 18h</p>
+                </div>
+              </li>
+              <li>
+                <div class="contato-icone">📍</div>
+                <div class="contato-detalhe">
+                  <h3>Endereço</h3>
+                  <p>Rua dos Animais, 123</p>
+                  <p>São Paulo, SP - CEP 01234-567</p>
+                </div>
+              </li>
+              <li>
+                <div class="contato-icone">🌐</div>
+                <div class="contato-detalhe">
+                  <h3>Redes Sociais</h3>
+                  <div class="redes-sociais">
+                    <a href="#" class="rede-social">Facebook</a>
+                    <a href="#" class="rede-social">Instagram</a>
+                    <a href="#" class="rede-social">Twitter</a>
+                    <a href="#" class="rede-social">YouTube</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="contato-secao">
+            <h2>Horário de Atendimento</h2>
+            <div class="horario-grid">
+              <div class="horario-dia">Segunda-feira</div>
+              <div class="horario-hora">9h às 18h</div>
+              <div class="horario-dia">Terça-feira</div>
+              <div class="horario-hora">9h às 18h</div>
+              <div class="horario-dia">Quarta-feira</div>
+              <div class="horario-hora">9h às 18h</div>
+              <div class="horario-dia">Quinta-feira</div>
+              <div class="horario-hora">9h às 18h</div>
+              <div class="horario-dia">Sexta-feira</div>
+              <div class="horario-hora">9h às 18h</div>
+              <div class="horario-dia">Sábado</div>
+              <div class="horario-hora">10h às 14h</div>
+              <div class="horario-dia">Domingo</div>
+              <div class="horario-hora">Fechado</div>
+            </div>
+          </section>
+        </div>
+
+        <div class="contato-formulario">
+          <h2>Envie-nos uma Mensagem</h2>
+          <form>
+            <div class="form-grupo">
+              <label for="nome">Nome completo</label>
+              <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome completo"
+                required
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Digite seu e-mail"
+                required
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label for="telefone">Telefone</label>
+              <input
+                type="tel"
+                id="telefone"
+                placeholder="Digite seu telefone"
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label for="assunto">Assunto</label>
+              <select id="assunto" required>
+                <option value="" disabled selected>Selecione um assunto</option>
+                <option value="duvida">Dúvida</option>
+                <option value="sugestao">Sugestão</option>
+                <option value="reclamacao">Reclamação</option>
+                <option value="parceria">Proposta de Parceria</option>
+                <option value="imprensa">Imprensa</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="form-grupo">
+              <label for="mensagem">Mensagem</label>
+              <textarea
+                id="mensagem"
+                placeholder="Digite sua mensagem"
+                rows="6"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-grupo checkbox-grupo">
+              <input type="checkbox" id="termos-contato" required />
+              <label for="termos-contato"
+                >Concordo com a
+                <a href="../pages/termos.html">Política de Privacidade</a> do
+                Achorro</label
+              >
+            </div>
+
+            <button type="submit" class="btn-enviar">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+
+      <section class="faq-secao">
+        <h2>Perguntas Frequentes</h2>
+
+        <div class="faq-lista">
+          <div class="faq-item">
+            <div class="faq-pergunta">
+              <h3>Como faço para cadastrar um pet perdido?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-resposta">
+              <p>
+                Para cadastrar um pet perdido, você precisa primeiro criar uma
+                conta no Achorro. Após o login, clique no botão "Criar nova
+                postagem" no menu superior, preencha todos os dados do seu pet,
+                adicione fotos e informações sobre o desaparecimento, e finalize
+                a publicação.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-pergunta">
+              <h3>O serviço do Achorro é gratuito?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-resposta">
+              <p>
+                Sim, o Achorro é totalmente gratuito para cadastro de pets
+                perdidos e encontrados. Não cobramos nenhuma taxa para
+                publicação ou para entrar em contato com outros usuários. Nosso
+                objetivo é ajudar a reunir pets com suas famílias.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-pergunta">
+              <h3>Como posso ajudar a divulgar um pet perdido?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-resposta">
+              <p>
+                Você pode ajudar compartilhando a publicação do pet nas suas
+                redes sociais, em grupos de bairro, ou diretamente com amigos e
+                familiares. Quanto mais pessoas virem a publicação, maiores são
+                as chances de encontrar o pet. Também é possível se voluntariar
+                para ajudar nas buscas físicas.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-pergunta">
+              <h3>Encontrei um pet perdido, o que devo fazer?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-resposta">
+              <p>
+                Se você encontrou um pet perdido, primeiro verifique se ele tem
+                identificação como coleira com telefone ou microchip. Em
+                seguida, você pode criar uma publicação no Achorro na categoria
+                "Pet Encontrado", com fotos e informações sobre onde e quando o
+                encontrou. Também recomendamos levar o animal a um veterinário
+                para verificar se possui microchip.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-pergunta">
+              <h3>Como posso me tornar um parceiro do Achorro?</h3>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-resposta">
+              <p>
+                Para se tornar um parceiro, entre em contato conosco através do
+                formulário nesta página, selecionando "Proposta de Parceria" no
+                campo assunto. Nossa equipe entrará em contato para discutir as
+                possibilidades de parceria. Estamos sempre abertos a colaborar
+                com clínicas veterinárias, pet shops, ONGs e outras organizações
+                relacionadas a animais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mapa-secao">
+        <h2>Nossa Localização</h2>
+        <div class="mapa-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1975790005467!2d-46.65429548502406!3d-23.56425868468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzUxLjMiUyA0NsKwMzknMDkuMCJX!5e0!3m2!1spt-BR!2sbr!4v1616593897156!5m2!1spt-BR!2sbr"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="../pages/termos.html">Termos de Uso</a>
+        <a href="../pages/sobre.html">Sobre nós</a>
+        <a href="../pages/contato.html">Contato</a>
+      </div>
+    </footer>
+  </body>
+</html>
