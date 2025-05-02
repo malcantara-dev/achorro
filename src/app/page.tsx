@@ -1,103 +1,152 @@
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import "@/styles/styles.css";
 
-export default function Home() {
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
+export default function HomePage() {
+  useEffect(() => {
+    // Lógica de contadores ou JS adicional pode ser colocado aqui se necessário
+  }, []);
+
+  const pets = [
+    { nome: "oreo", img: "/assets/images/pet1.jpg" },
+    { nome: "lorena", img: "/assets/images/pet2.jpg" },
+    { nome: "mel", img: "/assets/images/pet4.jpg" },
+    { nome: "nino", img: "/assets/images/pet5.jpg" },
+    { nome: "luna", img: "/assets/images/pet6.jpg" },
+    { nome: "thor", img: "/assets/images/pet7.jpg" },
+  ];
+
+  const comentarios = [
+    {
+      texto: "Ótimo site, simples de usar e uma comunidade bem unida!",
+      img: "/assets/images/perfil1.jpg",
+      nome: "José da Silva Pereira",
+      tempo: "Membro há 2 meses",
+    },
+    {
+      texto: "Encontrei meu Pet depois de 2 dias!",
+      img: "/assets/images/perfil2.jpg",
+      nome: "Eloisa Lopes",
+      tempo: "Membro há 3 semanas",
+    },
+    {
+      texto: "Sempre gosto de ajudar por aqui! É uma satisfação enorme.",
+      img: "/assets/images/perfil3.jpg",
+      nome: "João Antônio",
+      tempo: "Membro há 11 meses",
+    },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <header>
+        <div className="logo">
+          <Link href="/">
+            <div className="logo-icon" style={{ position: "relative", width: "90px", height: "90px" }}>
+              <Image src="/assets/icons/paw.png" alt="Logo" fill style={{ objectFit: "contain" }} />
+            </div>
+            <div className="logo-text">
+              <h1 className="logo-title">ACHORRO</h1>
+              <p className="logo-subtitle">ache seu pet!</p>
+            </div>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <nav>
+          <Link href="/cadastro">Cadastro</Link>
+          <Link href="/publicacoes">Publicações</Link>
+          <Link href="/nova-postagem">
+            <button>Criar nova postagem</button>
+          </Link>
+        </nav>
+      </header>
+
+      <section className="carousel">
+        <h2>Ajude-nos a encontrá-los!</h2>
+
+        <Swiper
+          modules={[Navigation]}
+          navigation
+          spaceBetween={20}
+          slidesPerView={2}
+          className="mySwiper"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          {pets.map((pet) => (
+            <SwiperSlide key={pet.nome} className="pet">
+              <Link href={`/publicacao-pet?pet=${pet.nome}`}>
+                <Image src={pet.img} alt={pet.nome} width={200} height={200} />
+                <p>{pet.nome.charAt(0).toUpperCase() + pet.nome.slice(1)}</p>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+
+      <section className="stats">
+        <div className="stat">
+          <strong id="counter1">0</strong>
+          <p>pessoas na comunidade!</p>
+        </div>
+        <div className="stat">
+          <strong id="counter2">0</strong>
+          <p>pets aos seus donos!</p>
+        </div>
+      </section>
+
+      <section className="join">
+        <div className="join-content">
+          <div className="join-form">
+            <h3>Junte-se à nós agora mesmo!</h3>
+            <form>
+              <input type="email" placeholder="Email para cadastro" />
+              <input type="password" placeholder="Senha" />
+              <button>Entrar para a comunidade!</button>
+            </form>
+          </div>
+          <div className="join-image">
+            <Image
+              src="/assets/images/juntar.png"
+              alt="Cachorro estiloso"
+              width={300}
+              height={300}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="titulo-comentario">
+        <h3>Comentários da Comunidade</h3>
+      </section>
+
+      <section className="comments">
+        {comentarios.map((c, i) => (
+          <div className="comment" key={i}>
+            “{c.texto}”
+            <div className="profile">
+              <Image src={c.img} alt={`Foto de perfil de ${c.nome}`} width={50} height={50} />
+              <div className="info">
+                <div className="name">{c.nome}</div>
+                <div>{c.tempo}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <footer>
+        <div className="footer-links">
+          <Link href="/termos">Termos de Uso</Link>
+          <Link href="/sobre">Sobre nós</Link>
+          <Link href="/contato">Contato</Link>
+        </div>
       </footer>
-    </div>
+    </>
   );
 }

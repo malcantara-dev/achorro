@@ -1,0 +1,222 @@
+/* Estilos para a página de publicações */
+.publicacoes-header {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  .publicacoes-header h1 {
+    color: #00796b;
+    margin-bottom: 10px;
+    font-size: 32px;
+  }
+  
+  .publicacoes-header p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+  
+  /* Estilos para os filtros */
+  .filtros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 200px;
+  }
+  
+  .filtro-grupo label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .filtro-grupo select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .btn-filtrar {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 20px;
+  }
+  
+  .btn-filtrar:hover {
+    background-color: #005a4f;
+  }
+  
+  /* Estilos para o grid de publicações */
+  .publicacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  
+  .publicacao-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .publicacao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .publicacao-imagem {
+    position: relative;
+    height: 200px;
+  }
+  
+  .publicacao-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .status.perdido{
+    background-color: #ff5252;
+    color: white;
+  }
+  
+  .status.encontrado{
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .publicacao-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .publicacao-info h3 {
+    margin: 0 0 5px;
+    color: #00796b;
+    font-size: 20px;
+  }
+  
+  .publicacao-info .raca {
+    color: #666;
+    font-style: italic;
+    margin: 0 0 10px;
+  }
+  
+  .publicacao-info .local,
+  .publicacao-info .data {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .tag {
+    background-color: #e0f2f1;
+    color: #00796b;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  /* Estilos para a paginação */
+  .paginacao {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 40px 0;
+  }
+  
+  .paginacao button {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .paginacao button.pagina-atual {
+    background-color: #00796b;
+    color: white;
+    border-color: #00796b;
+  }
+  
+  .paginacao button:hover:not(.pagina-atual) {
+    background-color: #f5f5f5;
+  }
+  
+  .paginacao button.proxima {
+    padding: 8px 15px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .publicacoes-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  
+    .filtros {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .filtro-grupo {
+      min-width: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .publicacoes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
