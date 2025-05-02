@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import '../styles/styles.css';
-import '../styles/paginas.css';
+import '@/styles/styles.css';
+import '@/styles/paginas.css';
 
 export default function SobreNos() {
   return (
