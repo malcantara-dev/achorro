@@ -26,11 +26,11 @@
 
 /* Estilos para a página Sobre Nós */
 .sobre-banner {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       rgba(0, 121, 107, 0.8),
       rgba(0, 121, 107, 0.8)
     ),
-    url("sobre-banner.jpg");
+    url("sobre-banner.jpg"); */
   background-size: cover;
   background-position: center;
 }
@@ -282,11 +282,11 @@
 
 /* Estilos para a página Termos de Uso */
 .termos-banner {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       rgba(0, 121, 107, 0.8),
       rgba(0, 121, 107, 0.8)
     ),
-    url("termos-banner.jpg");
+    url("termos-banner.jpg"); */
   background-size: cover;
   background-position: center;
 }
@@ -357,11 +357,11 @@
 }
 
 .contato-banner {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       rgba(0, 121, 107, 0.8),
       rgba(0, 121, 107, 0.8)
     ),
-    url("contato-banner.jpg");
+    url("contato-banner.jpg"); */
   background-size: cover;
   background-position: center;
 }
