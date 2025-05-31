@@ -308,43 +308,6 @@ const Publications = () => {
       )}
     </div>
   );
-
-  function getStatusBadge(status: PostStatus) {
-    const statusConfig = {
-      lost: { label: 'Perdido', className: 'bg-red-100 text-red-800' },
-      found: { label: 'Encontrado', className: 'bg-yellow-100 text-yellow-800' },
-      owner_found: { label: 'Dono Encontrado', className: 'bg-green-100 text-green-800' },
-    };
-
-    const config = statusConfig[status];
-    return (
-      <Badge className={config?.className || 'bg-gray-100 text-gray-800'}>
-        {config?.label || status}
-      </Badge>
-    );
-  }
-
-  function getAnimalTypeLabel(type: AnimalType) {
-    const types = {
-      dog: 'Cachorro',
-      cat: 'Gato',
-      bird: 'Pássaro',
-      rabbit: 'Coelho',
-      other: 'Outro',
-    };
-    return types[type] || type;
-  }
-
-  function formatDate(dateString: string) {
-    return new Date(dateString).toLocaleDateString('pt-BR');
-  }
-
-  function resetFilters() {
-    setSearchTerm('');
-    setSelectedAnimalType('');
-    setSelectedLocation('');
-    setCurrentPage(1);
-  }
 };
 
 export default Publications;
