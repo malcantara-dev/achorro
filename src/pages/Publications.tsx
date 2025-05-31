@@ -78,9 +78,20 @@ const Publications = () => {
     let query = supabase
       .from('posts')
       .select(`
-        *,
-        locations (city, state),
-        profiles (name)
+        id,
+        title,
+        description,
+        animal_type,
+        status,
+        main_photo_url,
+        created_at,
+        locations!inner (
+          city,
+          state
+        ),
+        profiles!inner (
+          name
+        )
       `)
       .order('created_at', { ascending: false });
 
@@ -103,13 +114,17 @@ const Publications = () => {
       .range(from, to);
 
     if (error) {
+      console.log('Supabase error:', error);
       toast({
         title: 'Erro ao carregar publicações',
         description: error.message,
         variant: 'destructive',
       });
     } else {
-      setPosts(data || []);
+      console.log('Raw data from Supabase:', data);
+      // Type assertion since we know the structure from our query
+      const typedPosts = data as unknown as Post[];
+      setPosts(typedPosts || []);
       setTotalPages(Math.ceil((count || 0) / postsPerPage));
     }
 
@@ -293,6 +308,43 @@ const Publications = () => {
       )}
     </div>
   );
+
+  function getStatusBadge(status: PostStatus) {
+    const statusConfig = {
+      lost: { label: 'Perdido', className: 'bg-red-100 text-red-800' },
+      found: { label: 'Encontrado', className: 'bg-yellow-100 text-yellow-800' },
+      owner_found: { label: 'Dono Encontrado', className: 'bg-green-100 text-green-800' },
+    };
+
+    const config = statusConfig[status];
+    return (
+      <Badge className={config?.className || 'bg-gray-100 text-gray-800'}>
+        {config?.label || status}
+      </Badge>
+    );
+  }
+
+  function getAnimalTypeLabel(type: AnimalType) {
+    const types = {
+      dog: 'Cachorro',
+      cat: 'Gato',
+      bird: 'Pássaro',
+      rabbit: 'Coelho',
+      other: 'Outro',
+    };
+    return types[type] || type;
+  }
+
+  function formatDate(dateString: string) {
+    return new Date(dateString).toLocaleDateString('pt-BR');
+  }
+
+  function resetFilters() {
+    setSearchTerm('');
+    setSelectedAnimalType('');
+    setSelectedLocation('');
+    setCurrentPage(1);
+  }
 };
 
 export default Publications;
