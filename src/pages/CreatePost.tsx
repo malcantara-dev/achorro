@@ -11,6 +11,9 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { Upload, X } from 'lucide-react';
+import type { Database } from '@/integrations/supabase/types';
+
+type AnimalType = Database['public']['Enums']['animal_type'];
 
 interface Location {
   id: string;
@@ -21,7 +24,7 @@ interface Location {
 const CreatePost = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [animalType, setAnimalType] = useState('');
+  const [animalType, setAnimalType] = useState<AnimalType | ''>('');
   const [locationId, setLocationId] = useState('');
   const [mainPhoto, setMainPhoto] = useState<File | null>(null);
   const [additionalPhotos, setAdditionalPhotos] = useState<File[]>([]);
@@ -115,6 +118,15 @@ const CreatePost = () => {
       return;
     }
 
+    if (!animalType) {
+      toast({
+        title: 'Erro',
+        description: 'É necessário selecionar o tipo de animal',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -137,7 +149,7 @@ const CreatePost = () => {
         .insert({
           title,
           description,
-          animal_type: animalType,
+          animal_type: animalType as AnimalType,
           location_id: locationId,
           user_id: user.id,
           main_photo_url: mainPhotoUrl,
@@ -212,7 +224,7 @@ const CreatePost = () => {
 
             <div>
               <Label htmlFor="animalType">Tipo de animal</Label>
-              <Select value={animalType} onValueChange={setAnimalType} required>
+              <Select value={animalType} onValueChange={(value: AnimalType) => setAnimalType(value)} required>
                 <SelectTrigger className="mt-1">
                   <SelectValue placeholder="Selecione o tipo de animal" />
                 </SelectTrigger>

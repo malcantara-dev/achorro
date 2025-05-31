@@ -8,13 +8,17 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Calendar, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import type { Database } from '@/integrations/supabase/types';
+
+type AnimalType = Database['public']['Enums']['animal_type'];
+type PostStatus = Database['public']['Enums']['post_status'];
 
 interface Post {
   id: string;
   title: string;
   description: string;
-  animal_type: string;
-  status: string;
+  animal_type: AnimalType;
+  status: PostStatus;
   main_photo_url: string;
   created_at: string;
   locations: {
@@ -37,7 +41,7 @@ const Publications = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedAnimalType, setSelectedAnimalType] = useState('');
+  const [selectedAnimalType, setSelectedAnimalType] = useState<AnimalType | ''>('');
   const [selectedLocation, setSelectedLocation] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -112,14 +116,14 @@ const Publications = () => {
     setLoading(false);
   };
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status: PostStatus) => {
     const statusConfig = {
       lost: { label: 'Perdido', className: 'bg-red-100 text-red-800' },
       found: { label: 'Encontrado', className: 'bg-yellow-100 text-yellow-800' },
       owner_found: { label: 'Dono Encontrado', className: 'bg-green-100 text-green-800' },
     };
 
-    const config = statusConfig[status as keyof typeof statusConfig];
+    const config = statusConfig[status];
     return (
       <Badge className={config?.className || 'bg-gray-100 text-gray-800'}>
         {config?.label || status}
@@ -127,7 +131,7 @@ const Publications = () => {
     );
   };
 
-  const getAnimalTypeLabel = (type: string) => {
+  const getAnimalTypeLabel = (type: AnimalType) => {
     const types = {
       dog: 'Cachorro',
       cat: 'Gato',
@@ -135,7 +139,7 @@ const Publications = () => {
       rabbit: 'Coelho',
       other: 'Outro',
     };
-    return types[type as keyof typeof types] || type;
+    return types[type] || type;
   };
 
   const formatDate = (dateString: string) => {
@@ -171,7 +175,7 @@ const Publications = () => {
             />
           </div>
 
-          <Select value={selectedAnimalType} onValueChange={setSelectedAnimalType}>
+          <Select value={selectedAnimalType} onValueChange={(value: AnimalType | '') => setSelectedAnimalType(value)}>
             <SelectTrigger>
               <SelectValue placeholder="Tipo de animal" />
             </SelectTrigger>
