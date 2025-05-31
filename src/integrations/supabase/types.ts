@@ -9,7 +9,163 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      comments: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          post_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          post_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          post_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comments_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          subject: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          subject?: string
+        }
+        Relationships: []
+      }
+      locations: {
+        Row: {
+          city: string
+          created_at: string
+          id: string
+          state: string
+        }
+        Insert: {
+          city: string
+          created_at?: string
+          id?: string
+          state: string
+        }
+        Update: {
+          city?: string
+          created_at?: string
+          id?: string
+          state?: string
+        }
+        Relationships: []
+      }
+      posts: {
+        Row: {
+          additional_photos: string[] | null
+          animal_type: Database["public"]["Enums"]["animal_type"]
+          created_at: string
+          description: string
+          id: string
+          location_id: string
+          main_photo_url: string
+          status: Database["public"]["Enums"]["post_status"]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          additional_photos?: string[] | null
+          animal_type: Database["public"]["Enums"]["animal_type"]
+          created_at?: string
+          description: string
+          id?: string
+          location_id: string
+          main_photo_url: string
+          status?: Database["public"]["Enums"]["post_status"]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          additional_photos?: string[] | null
+          animal_type?: Database["public"]["Enums"]["animal_type"]
+          created_at?: string
+          description?: string
+          id?: string
+          location_id?: string
+          main_photo_url?: string
+          status?: Database["public"]["Enums"]["post_status"]
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "posts_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          id: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -18,7 +174,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      animal_type: "dog" | "cat" | "bird" | "rabbit" | "other"
+      post_status: "lost" | "found" | "owner_found"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -133,6 +290,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      animal_type: ["dog", "cat", "bird", "rabbit", "other"],
+      post_status: ["lost", "found", "owner_found"],
+    },
   },
 } as const
