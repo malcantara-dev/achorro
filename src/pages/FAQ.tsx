@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   Accordion,
@@ -6,6 +7,33 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Footer from '@/components/Footer';
+
+const faqs = [
+  {
+    question: "Como posso cadastrar um pet perdido?",
+    answer: "Para cadastrar um pet perdido, faça login na sua conta e clique em 'Criar publicação'. Preencha todas as informações do seu pet, adicione fotos e escolha a localização onde ele foi visto pela última vez."
+  },
+  {
+    question: "É grátis usar o Achorro?",
+    answer: "Sim! O Achorro é completamente gratuito. Nossa missão é ajudar a reunir pets com suas famílias sem custo algum."
+  },
+  {
+    question: "Como posso ajudar a encontrar um pet perdido?",
+    answer: "Você pode navegar pelas publicações na seção 'Publicações' e, se reconhecer algum pet, entre em contato com o dono através das informações disponíveis na publicação."
+  },
+  {
+    question: "Posso editar ou excluir minha publicação?",
+    answer: "Sim, você pode gerenciar suas publicações através do seu perfil. Lá você pode editar informações, adicionar novas fotos ou marcar como 'Encontrado' quando seu pet retornar."
+  },
+  {
+    question: "Como funciona o sistema de notificações?",
+    answer: "Quando alguém entra em contato sobre sua publicação ou quando há atividade relevante, você receberá notificações por email (se habilitado em suas configurações)."
+  },
+  {
+    question: "Posso publicar sobre pets encontrados?",
+    answer: "Sim! Se você encontrou um pet na rua, pode criar uma publicação marcando como 'Encontrado' para ajudar a localizar o dono."
+  }
+];
 
 const FAQ = () => {
   return (

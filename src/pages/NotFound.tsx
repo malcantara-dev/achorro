@@ -1,5 +1,7 @@
+
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import Footer from "@/components/Footer";
 
 const NotFound = () => {
   const location = useLocation();
