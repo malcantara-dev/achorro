@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
@@ -27,7 +28,7 @@ interface Post {
   };
   profiles: {
     name: string;
-  };
+  } | null;
 }
 
 interface Location {
@@ -88,6 +89,9 @@ const Publications = () => {
         locations!inner (
           city,
           state
+        ),
+        profiles (
+          name
         )
       `)
       .order('created_at', { ascending: false });
@@ -262,7 +266,9 @@ const Publications = () => {
                             <Calendar className="h-4 w-4 mr-1" />
                             <span>{formatDate(post.created_at)}</span>
                           </div>
-                          <span className="text-xs">por {post.profiles.name}</span>
+                          <span className="text-xs">
+                            por {post.profiles?.name || 'Usuário'}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
