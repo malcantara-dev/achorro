@@ -1,5 +1,6 @@
 
 import { Heart, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
           {/* Logo and description */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Heart className="h-8 w-8 text-orange-500" />
+              <Heart className="h-8 w-8 text-green-500" />
               <span className="text-2xl font-bold">Achorro</span>
             </div>
             <p className="text-gray-400 mb-4">
@@ -17,9 +18,9 @@ const Footer = () => {
               Desde 2022, conectando corações e criando histórias de esperança.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-6 w-6 text-gray-400 hover:text-orange-500 cursor-pointer transition-colors" />
-              <Instagram className="h-6 w-6 text-gray-400 hover:text-orange-500 cursor-pointer transition-colors" />
-              <Twitter className="h-6 w-6 text-gray-400 hover:text-orange-500 cursor-pointer transition-colors" />
+              <Facebook className="h-6 w-6 text-gray-400 hover:text-green-500 cursor-pointer transition-colors" />
+              <Instagram className="h-6 w-6 text-gray-400 hover:text-green-500 cursor-pointer transition-colors" />
+              <Twitter className="h-6 w-6 text-gray-400 hover:text-green-500 cursor-pointer transition-colors" />
             </div>
           </div>
 
@@ -27,10 +28,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Links rápidos</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Publicações</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Meu perfil</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Criar conta</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Entrar</a></li>
+              <li><Link to="/publicacoes" className="text-gray-400 hover:text-green-500 transition-colors">Publicações</Link></li>
+              <li><Link to="/meu-perfil" className="text-gray-400 hover:text-green-500 transition-colors">Meu perfil</Link></li>
+              <li><Link to="/criar-conta" className="text-gray-400 hover:text-green-500 transition-colors">Criar conta</Link></li>
+              <li><Link to="/entrar" className="text-gray-400 hover:text-green-500 transition-colors">Entrar</Link></li>
             </ul>
           </div>
 
@@ -38,10 +39,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Suporte</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">FAQ</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Sobre nós</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Contato</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Política de privacidade</a></li>
+              <li><Link to="/faq" className="text-gray-400 hover:text-green-500 transition-colors">FAQ</Link></li>
+              <li><Link to="/sobre-nos" className="text-gray-400 hover:text-green-500 transition-colors">Sobre nós</Link></li>
+              <li><Link to="/contato" className="text-gray-400 hover:text-green-500 transition-colors">Contato</Link></li>
+              <li><a href="#" className="text-gray-400 hover:text-green-500 transition-colors">Política de privacidade</a></li>
             </ul>
           </div>
         </div>

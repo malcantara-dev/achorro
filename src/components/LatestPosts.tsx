@@ -2,6 +2,7 @@
 import { MapPin, Calendar, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 const LatestPosts = () => {
   const mockPosts = [
@@ -93,8 +94,8 @@ const LatestPosts = () => {
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-orange-600">{post.type}</span>
-                  <Button size="sm" variant="outline" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
+                  <span className="text-sm font-medium text-green-600">{post.type}</span>
+                  <Button size="sm" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
                     Ver detalhes
                   </Button>
                 </div>
@@ -104,9 +105,11 @@ const LatestPosts = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-orange-500 hover:bg-orange-600">
-            Ver todas as publicações
-          </Button>
+          <Link to="/publicacoes">
+            <Button size="lg" className="bg-green-600 hover:bg-green-700">
+              Ver todas as publicações
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
