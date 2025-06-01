@@ -12,9 +12,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Publications from "./pages/Publications";
 import CreatePost from "./pages/CreatePost";
+import Profile from "./pages/Profile";
 import AboutUs from "./pages/AboutUs";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,9 +43,18 @@ const App = () => (
                   </ProtectedRoute>
                 } 
               />
+              <Route 
+                path="/meu-perfil" 
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                } 
+              />
               <Route path="/sobre-nos" element={<AboutUs />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/contato" element={<Contact />} />
+              <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
