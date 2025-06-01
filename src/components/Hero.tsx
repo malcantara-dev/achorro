@@ -13,7 +13,7 @@ const Hero = () => {
             Achorro
           </h1>
           <p className="text-2xl md:text-3xl text-green-600 font-medium mb-8">
-            Find your pet!
+            Encontre seu pet!
           </p>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
             A comunidade brasileira dedicada a reunir pets perdidos com suas famílias. 
