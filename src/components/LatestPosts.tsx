@@ -1,52 +1,104 @@
 
-import { MapPin, Calendar, Heart } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MapPin, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
+import type { Database } from '@/integrations/supabase/types';
+
+type AnimalType = Database['public']['Enums']['animal_type'];
+type PostStatus = Database['public']['Enums']['post_status'];
+
+interface Post {
+  id: string;
+  title: string;
+  description: string;
+  animal_type: AnimalType;
+  status: PostStatus;
+  main_photo_url: string;
+  created_at: string;
+  locations: {
+    city: string;
+    state: string;
+  };
+}
 
 const LatestPosts = () => {
-  const mockPosts = [
-    {
-      id: 1,
-      title: "Luna",
-      type: "Cachorro",
-      location: "São Paulo, SP",
-      description: "Cachorra pequeno porte, pelagem dourada, muito dócil. Fugiu durante passeio no parque.",
-      image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=300&fit=crop",
-      date: "2 dias atrás",
-      status: "Pet perdido"
-    },
-    {
-      id: 2,
-      title: "Milo",
-      type: "Gato",
-      location: "Rio de Janeiro, RJ",
-      description: "Gato siamês, olhos azuis, muito carinhoso. Saiu de casa na madrugada.",
-      image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
-      date: "4 dias atrás",
-      status: "Pet perdido"
-    },
-    {
-      id: 3,
-      title: "Bella",
-      type: "Cachorro",
-      location: "Belo Horizonte, MG",
-      description: "Labrador dourado, porte grande, muito amigável. Perdida próximo ao shopping.",
-      image: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400&h=300&fit=crop",
-      date: "1 semana atrás",
-      status: "Pet encontrado"
-    },
-    {
-      id: 4,
-      title: "Thor",
-      type: "Cachorro",
-      location: "Salvador, BA",
-      description: "Pastor alemão, porte grande, pelagem escura. Muito protetor e leal.",
-      image: "https://images.unsplash.com/photo-1605568427561-40dd23c2acea?w=400&h=300&fit=crop",
-      date: "3 dias atrás",
-      status: "Pet perdido"
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchLatestPosts();
+  }, []);
+
+  const fetchLatestPosts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('posts')
+        .select(`
+          id,
+          title,
+          description,
+          animal_type,
+          status,
+          main_photo_url,
+          created_at,
+          locations!inner (
+            city,
+            state
+          )
+        `)
+        .order('created_at', { ascending: false })
+        .limit(4);
+
+      if (error) {
+        console.log('Error fetching posts:', error);
+        // If there's an error, we'll show the mock data
+        setPosts([]);
+      } else {
+        const typedPosts = data as unknown as Post[];
+        setPosts(typedPosts || []);
+      }
+    } catch (error) {
+      console.log('Error:', error);
+      setPosts([]);
     }
-  ];
+    setLoading(false);
+  };
+
+  const getStatusBadge = (status: PostStatus) => {
+    const statusConfig = {
+      lost: { label: 'Pet perdido', className: 'bg-red-100 text-red-800' },
+      found: { label: 'Pet encontrado', className: 'bg-yellow-100 text-yellow-800' },
+      owner_found: { label: 'Dono encontrado', className: 'bg-green-100 text-green-800' },
+    };
+
+    const config = statusConfig[status];
+    return (
+      <Badge className={config?.className || 'bg-gray-100 text-gray-800'}>
+        {config?.label || status}
+      </Badge>
+    );
+  };
+
+  const getAnimalTypeLabel = (type: AnimalType) => {
+    const types = {
+      dog: 'Cachorro',
+      cat: 'Gato',
+      bird: 'Pássaro',
+      rabbit: 'Coelho',
+      other: 'Outro',
+    };
+    return types[type] || type;
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('pt-BR');
+  };
 
   return (
     <div className="bg-gray-50 py-16">
@@ -60,57 +112,76 @@ const LatestPosts = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {mockPosts.map((post) => (
-            <Card key={post.id} className="hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-              <div className="relative">
-                <img 
-                  src={post.image} 
-                  alt={post.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-medium ${
-                  post.status === 'Pet encontrado' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-red-100 text-red-800'
-                }`}>
-                  {post.status}
+        {loading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {posts.length > 0 ? (
+                posts.map((post) => (
+                  <Card key={post.id} className="hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                    <div className="relative">
+                      <img 
+                        src={post.main_photo_url || '/placeholder.svg'} 
+                        alt={post.title}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute top-2 right-2">
+                        {getStatusBadge(post.status)}
+                      </div>
+                    </div>
+                    
+                    <CardContent className="p-4">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
+                      <p className="text-sm text-gray-600 mb-3 line-clamp-2">{post.description}</p>
+                      
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center text-sm text-gray-500">
+                          <MapPin className="h-4 w-4 mr-1" />
+                          {post.locations.city}, {post.locations.state}
+                        </div>
+                        <div className="flex items-center text-sm text-gray-500">
+                          <Calendar className="h-4 w-4 mr-1" />
+                          {formatDate(post.created_at)}
+                        </div>
+                      </div>
+                      
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium text-green-600">
+                          {getAnimalTypeLabel(post.animal_type)}
+                        </span>
+                        <Link to={`/publicacoes?highlight=${post.id}`}>
+                          <Button size="sm" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
+                            Ver detalhes
+                          </Button>
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-8">
+                  <p className="text-gray-500">Nenhuma publicação encontrada ainda.</p>
+                  <Link to="/criar-publicacao">
+                    <Button className="mt-4 bg-green-600 hover:bg-green-700">
+                      Seja o primeiro a publicar
+                    </Button>
+                  </Link>
                 </div>
-              </div>
-              
-              <CardContent className="p-4">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
-                <p className="text-sm text-gray-600 mb-3">{post.description}</p>
-                
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center text-sm text-gray-500">
-                    <MapPin className="h-4 w-4 mr-1" />
-                    {post.location}
-                  </div>
-                  <div className="flex items-center text-sm text-gray-500">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    {post.date}
-                  </div>
-                </div>
-                
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-green-600">{post.type}</span>
-                  <Button size="sm" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
-                    Ver detalhes
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              )}
+            </div>
 
-        <div className="text-center">
-          <Link to="/publicacoes">
-            <Button size="lg" className="bg-green-600 hover:bg-green-700">
-              Ver todas as publicações
-            </Button>
-          </Link>
-        </div>
+            <div className="text-center">
+              <Link to="/publicacoes">
+                <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                  Ver todas as publicações
+                </Button>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

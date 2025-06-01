@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -11,6 +10,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { Upload, X } from 'lucide-react';
+import Footer from '@/components/Footer';
 import type { Database } from '@/integrations/supabase/types';
 
 type AnimalType = Database['public']['Enums']['animal_type'];
@@ -184,157 +184,162 @@ const CreatePost = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Criar Nova Publicação</CardTitle>
-          <CardDescription>
-            Preencha as informações sobre o pet perdido ou encontrado
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <Label htmlFor="title">Nome do pet</Label>
-              <Input
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-                className="mt-1"
-                placeholder="Ex: Rex, Mimi, Bolinha..."
-              />
-            </div>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Criar Nova Publicação</CardTitle>
+              <CardDescription>
+                Preencha as informações sobre o pet perdido ou encontrado
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Label htmlFor="title">Nome do pet</Label>
+                  <Input
+                    id="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                    className="mt-1"
+                    placeholder="Ex: Rex, Mimi, Bolinha..."
+                  />
+                </div>
 
-            <div>
-              <Label htmlFor="description">Descrição (máximo 140 caracteres)</Label>
-              <Textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                maxLength={140}
-                className="mt-1"
-                placeholder="Descreva características do pet, onde foi visto pela última vez, etc."
-              />
-              <p className="text-sm text-gray-500 mt-1">
-                {description.length}/140 caracteres
-              </p>
-            </div>
+                <div>
+                  <Label htmlFor="description">Descrição (máximo 140 caracteres)</Label>
+                  <Textarea
+                    id="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                    maxLength={140}
+                    className="mt-1"
+                    placeholder="Descreva características do pet, onde foi visto pela última vez, etc."
+                  />
+                  <p className="text-sm text-gray-500 mt-1">
+                    {description.length}/140 caracteres
+                  </p>
+                </div>
 
-            <div>
-              <Label htmlFor="animalType">Tipo de animal</Label>
-              <Select value={animalType} onValueChange={(value: AnimalType) => setAnimalType(value)} required>
-                <SelectTrigger className="mt-1">
-                  <SelectValue placeholder="Selecione o tipo de animal" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="dog">Cachorro</SelectItem>
-                  <SelectItem value="cat">Gato</SelectItem>
-                  <SelectItem value="bird">Pássaro</SelectItem>
-                  <SelectItem value="rabbit">Coelho</SelectItem>
-                  <SelectItem value="other">Outro</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+                <div>
+                  <Label htmlFor="animalType">Tipo de animal</Label>
+                  <Select value={animalType} onValueChange={(value: AnimalType) => setAnimalType(value)} required>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="Selecione o tipo de animal" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="dog">Cachorro</SelectItem>
+                      <SelectItem value="cat">Gato</SelectItem>
+                      <SelectItem value="bird">Pássaro</SelectItem>
+                      <SelectItem value="rabbit">Coelho</SelectItem>
+                      <SelectItem value="other">Outro</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-            <div>
-              <Label htmlFor="location">Localização</Label>
-              <Select value={locationId} onValueChange={setLocationId} required>
-                <SelectTrigger className="mt-1">
-                  <SelectValue placeholder="Selecione a cidade" />
-                </SelectTrigger>
-                <SelectContent>
-                  {locations.map((location) => (
-                    <SelectItem key={location.id} value={location.id}>
-                      {location.city}, {location.state}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+                <div>
+                  <Label htmlFor="location">Localização</Label>
+                  <Select value={locationId} onValueChange={setLocationId} required>
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="Selecione a cidade" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {locations.map((location) => (
+                        <SelectItem key={location.id} value={location.id}>
+                          {location.city}, {location.state}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-            <div>
-              <Label htmlFor="mainPhoto">Foto principal *</Label>
-              <div className="mt-1">
-                <input
-                  id="mainPhoto"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleMainPhotoChange}
-                  required
-                  className="hidden"
-                />
-                <label
-                  htmlFor="mainPhoto"
-                  className="flex items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-500"
-                >
-                  {mainPhoto ? (
-                    <div className="text-center">
-                      <p className="text-sm text-gray-600">{mainPhoto.name}</p>
-                      <p className="text-xs text-green-600">Clique para alterar</p>
-                    </div>
-                  ) : (
-                    <div className="text-center">
-                      <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                      <p className="text-sm text-gray-600">Clique para adicionar a foto principal</p>
+                <div>
+                  <Label htmlFor="mainPhoto">Foto principal *</Label>
+                  <div className="mt-1">
+                    <input
+                      id="mainPhoto"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleMainPhotoChange}
+                      required
+                      className="hidden"
+                    />
+                    <label
+                      htmlFor="mainPhoto"
+                      className="flex items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-500"
+                    >
+                      {mainPhoto ? (
+                        <div className="text-center">
+                          <p className="text-sm text-gray-600">{mainPhoto.name}</p>
+                          <p className="text-xs text-green-600">Clique para alterar</p>
+                        </div>
+                      ) : (
+                        <div className="text-center">
+                          <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+                          <p className="text-sm text-gray-600">Clique para adicionar a foto principal</p>
+                        </div>
+                      )}
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="additionalPhotos">Fotos adicionais (máximo 4)</Label>
+                  <div className="mt-1">
+                    <input
+                      id="additionalPhotos"
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handleAdditionalPhotosChange}
+                      className="hidden"
+                    />
+                    <label
+                      htmlFor="additionalPhotos"
+                      className="flex items-center justify-center w-full h-20 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-500"
+                    >
+                      <div className="text-center">
+                        <Upload className="h-6 w-6 text-gray-400 mx-auto mb-1" />
+                        <p className="text-xs text-gray-600">Adicionar fotos extras</p>
+                      </div>
+                    </label>
+                  </div>
+
+                  {additionalPhotos.length > 0 && (
+                    <div className="mt-2 space-y-2">
+                      {additionalPhotos.map((file, index) => (
+                        <div key={index} className="flex items-center justify-between bg-gray-100 p-2 rounded">
+                          <span className="text-sm">{file.name}</span>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => removeAdditionalPhoto(index)}
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      ))}
                     </div>
                   )}
-                </label>
-              </div>
-            </div>
-
-            <div>
-              <Label htmlFor="additionalPhotos">Fotos adicionais (máximo 4)</Label>
-              <div className="mt-1">
-                <input
-                  id="additionalPhotos"
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handleAdditionalPhotosChange}
-                  className="hidden"
-                />
-                <label
-                  htmlFor="additionalPhotos"
-                  className="flex items-center justify-center w-full h-20 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-500"
-                >
-                  <div className="text-center">
-                    <Upload className="h-6 w-6 text-gray-400 mx-auto mb-1" />
-                    <p className="text-xs text-gray-600">Adicionar fotos extras</p>
-                  </div>
-                </label>
-              </div>
-
-              {additionalPhotos.length > 0 && (
-                <div className="mt-2 space-y-2">
-                  {additionalPhotos.map((file, index) => (
-                    <div key={index} className="flex items-center justify-between bg-gray-100 p-2 rounded">
-                      <span className="text-sm">{file.name}</span>
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => removeAdditionalPhoto(index)}
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  ))}
                 </div>
-              )}
-            </div>
 
-            <Button
-              type="submit"
-              className="w-full bg-green-600 hover:bg-green-700"
-              disabled={loading}
-            >
-              {loading ? 'Criando publicação...' : 'Criar publicação'}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+                <Button
+                  type="submit"
+                  className="w-full bg-green-600 hover:bg-green-700"
+                  disabled={loading}
+                >
+                  {loading ? 'Criando publicação...' : 'Criar publicação'}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };

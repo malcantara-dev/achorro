@@ -49,7 +49,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Achorro. Todos os direitos reservados. Feito com ❤️ para reunir famílias.
+            © 2025 Achorro. Todos os direitos reservados. Feito com ❤️ para reunir famílias.
           </p>
         </div>
       </div>
