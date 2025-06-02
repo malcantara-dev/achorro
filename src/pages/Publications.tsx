@@ -86,11 +86,12 @@ const Publications = () => {
         status,
         main_photo_url,
         created_at,
+        user_id,
         locations!inner (
           city,
           state
         ),
-        profiles (
+        profiles!posts_user_id_fkey (
           name
         )
       `)
