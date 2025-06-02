@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Publications from "./pages/Publications";
+import PostDetail from "./pages/PostDetail";
 import CreatePost from "./pages/CreatePost";
 import Profile from "./pages/Profile";
 import AboutUs from "./pages/AboutUs";
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/entrar" element={<Login />} />
               <Route path="/criar-conta" element={<Register />} />
               <Route path="/publicacoes" element={<Publications />} />
+              <Route path="/publicacoes/:id" element={<PostDetail />} />
               <Route 
                 path="/criar-publicacao" 
                 element={

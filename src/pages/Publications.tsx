@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { MapPin, Calendar, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 import type { Database } from '@/integrations/supabase/types';
 
 type AnimalType = Database['public']['Enums']['animal_type'];
@@ -22,13 +23,12 @@ interface Post {
   status: PostStatus;
   main_photo_url: string;
   created_at: string;
+  user_id: string;
   locations: {
     city: string;
     state: string;
   };
-  profiles: {
-    name: string;
-  } | null;
+  author_name?: string;
 }
 
 interface Location {
@@ -90,9 +90,6 @@ const Publications = () => {
         locations!inner (
           city,
           state
-        ),
-        profiles!posts_user_id_fkey (
-          name
         )
       `)
       .order('created_at', { ascending: false });
@@ -112,8 +109,7 @@ const Publications = () => {
     const from = (currentPage - 1) * postsPerPage;
     const to = from + postsPerPage - 1;
 
-    const { data, error, count } = await query
-      .range(from, to);
+    const { data, error, count } = await query.range(from, to);
 
     if (error) {
       console.log('Supabase error:', error);
@@ -124,8 +120,24 @@ const Publications = () => {
       });
     } else {
       console.log('Raw data from Supabase:', data);
-      const typedPosts = data as unknown as Post[];
-      setPosts(typedPosts || []);
+      
+      // Fetch author names separately to avoid relationship issues
+      const postsWithAuthors = await Promise.all(
+        (data || []).map(async (post) => {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('name')
+            .eq('id', post.user_id)
+            .single();
+          
+          return {
+            ...post,
+            author_name: profile?.name || 'Usuário'
+          } as Post;
+        })
+      );
+
+      setPosts(postsWithAuthors);
       setTotalPages(Math.ceil((count || 0) / postsPerPage));
     }
 
@@ -268,9 +280,17 @@ const Publications = () => {
                             <span>{formatDate(post.created_at)}</span>
                           </div>
                           <span className="text-xs">
-                            por {post.profiles?.name || 'Usuário'}
+                            por {post.author_name}
                           </span>
                         </div>
+                      </div>
+                      
+                      <div className="mt-4">
+                        <Link to={`/publicacoes/${post.id}`}>
+                          <Button size="sm" className="w-full bg-green-600 hover:bg-green-700">
+                            Ver detalhes
+                          </Button>
+                        </Link>
                       </div>
                     </CardContent>
                   </Card>
