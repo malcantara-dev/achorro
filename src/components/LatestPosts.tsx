@@ -52,12 +52,12 @@ const LatestPosts = () => {
             state
           )
         `)
+        .not('location_id', 'is', null)
         .order('created_at', { ascending: false })
         .limit(4);
 
       if (error) {
         console.log('Error fetching posts:', error);
-        // If there's an error, we'll show the mock data
         setPosts([]);
       } else {
         const typedPosts = data as unknown as Post[];
@@ -152,7 +152,7 @@ const LatestPosts = () => {
                         <span className="text-sm font-medium text-green-600">
                           {getAnimalTypeLabel(post.animal_type)}
                         </span>
-                        <Link to={`/publicacoes?highlight=${post.id}`}>
+                        <Link to={`/publicacoes/${post.id}`}>
                           <Button size="sm" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
                             Ver detalhes
                           </Button>

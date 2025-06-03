@@ -91,7 +91,7 @@ const Publications = () => {
           city,
           state
         )
-      `)
+      `, { count: 'exact' })
       .order('created_at', { ascending: false });
 
     if (searchTerm) {
@@ -210,6 +210,7 @@ const Publications = () => {
                   <SelectValue placeholder="Tipo de animal" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="">Todos os tipos</SelectItem>
                   <SelectItem value="dog">Cachorro</SelectItem>
                   <SelectItem value="cat">Gato</SelectItem>
                   <SelectItem value="bird">Pássaro</SelectItem>
@@ -222,7 +223,8 @@ const Publications = () => {
                 <SelectTrigger>
                   <SelectValue placeholder="Localização" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="max-h-60">
+                  <SelectItem value="">Todas as localizações</SelectItem>
                   {locations.map((location) => (
                     <SelectItem key={location.id} value={location.id}>
                       {location.city}, {location.state}
