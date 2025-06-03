@@ -42,8 +42,8 @@ const Publications = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedAnimalType, setSelectedAnimalType] = useState<AnimalType | ''>('');
-  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedAnimalType, setSelectedAnimalType] = useState<AnimalType | 'all'>('all');
+  const [selectedLocation, setSelectedLocation] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const { toast } = useToast();
@@ -98,11 +98,11 @@ const Publications = () => {
       query = query.ilike('title', `%${searchTerm}%`);
     }
 
-    if (selectedAnimalType) {
+    if (selectedAnimalType && selectedAnimalType !== 'all') {
       query = query.eq('animal_type', selectedAnimalType);
     }
 
-    if (selectedLocation) {
+    if (selectedLocation && selectedLocation !== 'all') {
       query = query.eq('location_id', selectedLocation);
     }
 
@@ -176,8 +176,8 @@ const Publications = () => {
 
   const resetFilters = () => {
     setSearchTerm('');
-    setSelectedAnimalType('');
-    setSelectedLocation('');
+    setSelectedAnimalType('all');
+    setSelectedLocation('all');
     setCurrentPage(1);
   };
 
@@ -205,12 +205,12 @@ const Publications = () => {
                 />
               </div>
 
-              <Select value={selectedAnimalType} onValueChange={(value: AnimalType | '') => setSelectedAnimalType(value)}>
+              <Select value={selectedAnimalType} onValueChange={(value: AnimalType | 'all') => setSelectedAnimalType(value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Tipo de animal" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Todos os tipos</SelectItem>
+                  <SelectItem value="all">Todos os tipos</SelectItem>
                   <SelectItem value="dog">Cachorro</SelectItem>
                   <SelectItem value="cat">Gato</SelectItem>
                   <SelectItem value="bird">Pássaro</SelectItem>
@@ -224,7 +224,7 @@ const Publications = () => {
                   <SelectValue placeholder="Localização" />
                 </SelectTrigger>
                 <SelectContent className="max-h-60">
-                  <SelectItem value="">Todas as localizações</SelectItem>
+                  <SelectItem value="all">Todas as localizações</SelectItem>
                   {locations.map((location) => (
                     <SelectItem key={location.id} value={location.id}>
                       {location.city}, {location.state}
