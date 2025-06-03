@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -163,6 +162,15 @@ const PostDetail = () => {
   const handleSubmitComment = async () => {
     if (!user || !newComment.trim() || !post) return;
 
+    if (newComment.trim().length > 140) {
+      toast({
+        title: 'Comentário muito longo',
+        description: 'O comentário deve ter no máximo 140 caracteres.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setSubmittingComment(true);
 
     const { error } = await supabase
@@ -193,6 +201,15 @@ const PostDetail = () => {
 
   const handleEditComment = async (commentId: string) => {
     if (!editContent.trim()) return;
+
+    if (editContent.trim().length > 140) {
+      toast({
+        title: 'Comentário muito longo',
+        description: 'O comentário deve ter no máximo 140 caracteres.',
+        variant: 'destructive',
+      });
+      return;
+    }
 
     const { error } = await supabase
       .from('comments')
@@ -404,19 +421,25 @@ const PostDetail = () => {
                 {user && post.status !== 'owner_found' && (
                   <div className="mb-6">
                     <Textarea
-                      placeholder="Adicione um comentário..."
+                      placeholder="Adicione um comentário... (máximo 140 caracteres)"
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
+                      maxLength={140}
                       className="mb-3"
                     />
-                    <Button
-                      onClick={handleSubmitComment}
-                      disabled={!newComment.trim() || submittingComment}
-                      className="bg-green-600 hover:bg-green-700"
-                    >
-                      <Send className="h-4 w-4 mr-2" />
-                      {submittingComment ? 'Enviando...' : 'Comentar'}
-                    </Button>
+                    <div className="flex justify-between items-center mb-3">
+                      <p className="text-sm text-gray-500">
+                        {newComment.length}/140 caracteres
+                      </p>
+                      <Button
+                        onClick={handleSubmitComment}
+                        disabled={!newComment.trim() || submittingComment}
+                        className="bg-green-600 hover:bg-green-700"
+                      >
+                        <Send className="h-4 w-4 mr-2" />
+                        {submittingComment ? 'Enviando...' : 'Comentar'}
+                      </Button>
+                    </div>
                   </div>
                 )}
 
@@ -472,8 +495,12 @@ const PostDetail = () => {
                           <Textarea
                             value={editContent}
                             onChange={(e) => setEditContent(e.target.value)}
+                            maxLength={140}
                             className="mb-2"
                           />
+                          <p className="text-sm text-gray-500 mb-2">
+                            {editContent.length}/140 caracteres
+                          </p>
                           <div className="flex space-x-2">
                             <Button
                               size="sm"

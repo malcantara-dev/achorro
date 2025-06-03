@@ -78,6 +78,15 @@ const Profile = () => {
     e.preventDefault();
     if (!user) return;
 
+    if (name.length > 20) {
+      toast({
+        title: 'Nome muito longo',
+        description: 'O nome deve ter no máximo 20 caracteres.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setUpdating(true);
 
     const { error } = await supabase
@@ -148,13 +157,17 @@ const Profile = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="name">Nome</Label>
+                    <Label htmlFor="name">Nome (máximo 20 caracteres)</Label>
                     <Input
                       id="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
+                      maxLength={20}
                     />
+                    <p className="text-sm text-gray-500 mt-1">
+                      {name.length}/20 caracteres
+                    </p>
                   </div>
 
                   <Button

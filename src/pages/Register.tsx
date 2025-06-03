@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -42,6 +41,15 @@ const Register = () => {
       toast({
         title: 'Senha muito curta',
         description: 'A senha deve ter pelo menos 6 caracteres.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    if (name.length > 20) {
+      toast({
+        title: 'Nome muito longo',
+        description: 'O nome deve ter no máximo 20 caracteres.',
         variant: 'destructive',
       });
       return;
@@ -109,16 +117,20 @@ const Register = () => {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name">Nome completo</Label>
+                  <Label htmlFor="name">Nome completo (máximo 20 caracteres)</Label>
                   <Input
                     id="name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
+                    maxLength={20}
                     className="mt-1"
                     placeholder="Seu nome completo"
                   />
+                  <p className="text-sm text-gray-500 mt-1">
+                    {name.length}/20 caracteres
+                  </p>
                 </div>
 
                 <div>

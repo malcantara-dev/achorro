@@ -127,6 +127,15 @@ const CreatePost = () => {
       return;
     }
 
+    if (title.length > 20) {
+      toast({
+        title: 'Nome muito longo',
+        description: 'O nome do pet deve ter no máximo 20 caracteres.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -197,15 +206,19 @@ const CreatePost = () => {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="title">Nome do pet</Label>
+                  <Label htmlFor="title">Nome do pet (máximo 20 caracteres)</Label>
                   <Input
                     id="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
+                    maxLength={20}
                     className="mt-1"
                     placeholder="Ex: Rex, Mimi, Bolinha..."
                   />
+                  <p className="text-sm text-gray-500 mt-1">
+                    {title.length}/20 caracteres
+                  </p>
                 </div>
 
                 <div>
