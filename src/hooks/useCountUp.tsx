@@ -9,12 +9,10 @@ interface UseCountUpProps {
 
 export const useCountUp = ({ end, duration = 2000, startOnMount = true }: UseCountUpProps) => {
   const [count, setCount] = useState(0);
-  const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
-    if (!startOnMount || isStarted) return;
+    if (!startOnMount) return;
     
-    setIsStarted(true);
     let startTime: number;
     let animationFrame: number;
 
@@ -39,7 +37,7 @@ export const useCountUp = ({ end, duration = 2000, startOnMount = true }: UseCou
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, [end, duration, startOnMount, isStarted]);
+  }, [end, duration, startOnMount]);
 
   return count;
 };

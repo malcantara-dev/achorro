@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 import Navigation from "@/components/Navigation";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
@@ -22,6 +23,45 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const AppContent = () => {
+  useScrollToTop();
+  
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/entrar" element={<Login />} />
+        <Route path="/criar-conta" element={<Register />} />
+        <Route path="/publicacoes" element={<Publications />} />
+        <Route path="/publicacoes/:id" element={<PostDetail />} />
+        <Route 
+          path="/criar-publicacao" 
+          element={
+            <ProtectedRoute>
+              <CreatePost />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/meu-perfil" 
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path="/sobre-nos" element={<AboutUs />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/contato" element={<Contact />} />
+        <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -29,38 +69,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-          <div className="min-h-screen bg-gray-50">
-            <Navigation />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/entrar" element={<Login />} />
-              <Route path="/criar-conta" element={<Register />} />
-              <Route path="/publicacoes" element={<Publications />} />
-              <Route path="/publicacoes/:id" element={<PostDetail />} />
-              <Route 
-                path="/criar-publicacao" 
-                element={
-                  <ProtectedRoute>
-                    <CreatePost />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/meu-perfil" 
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route path="/sobre-nos" element={<AboutUs />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/contato" element={<Contact />} />
-              <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
+          <AppContent />
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
