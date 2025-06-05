@@ -2,6 +2,7 @@
 import { Search, Heart, Users, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import StatCard from '@/components/StatCard';
 
 const Hero = () => {
   return (
@@ -66,29 +67,37 @@ const Hero = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
-              <div className="text-4xl font-bold text-blue-600 mb-2">1,234</div>
-              <div className="text-lg font-medium text-gray-700">Pets reunidos</div>
-              <div className="text-sm text-gray-500 mt-1">com suas famílias</div>
-            </div>
+            <StatCard
+              value={1234}
+              title="Pets reunidos"
+              subtitle="com suas famílias"
+              bgColor="bg-gradient-to-br from-blue-50 to-blue-100"
+              textColor="text-blue-600"
+            />
             
-            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
-              <div className="text-4xl font-bold text-green-600 mb-2">45,667</div>
-              <div className="text-lg font-medium text-gray-700">Membros ativos</div>
-              <div className="text-sm text-gray-500 mt-1">em nossa comunidade</div>
-            </div>
+            <StatCard
+              value={45667}
+              title="Membros ativos"
+              subtitle="em nossa comunidade"
+              bgColor="bg-gradient-to-br from-green-50 to-green-100"
+              textColor="text-green-600"
+            />
             
-            <div className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
-              <div className="text-4xl font-bold text-green-600 mb-2">8,923</div>
-              <div className="text-lg font-medium text-gray-700">Publicações ativas</div>
-              <div className="text-sm text-gray-500 mt-1">em busca de reencontro</div>
-            </div>
+            <StatCard
+              value={8923}
+              title="Publicações ativas"
+              subtitle="em busca de reencontro"
+              bgColor="bg-gradient-to-br from-green-50 to-green-100"
+              textColor="text-green-600"
+            />
             
-            <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl">
-              <div className="text-4xl font-bold text-purple-600 mb-2">156</div>
-              <div className="text-lg font-medium text-gray-700">Cidades atendidas</div>
-              <div className="text-sm text-gray-500 mt-1">em todo o Brasil</div>
-            </div>
+            <StatCard
+              value={156}
+              title="Cidades atendidas"
+              subtitle="em todo o Brasil"
+              bgColor="bg-gradient-to-br from-purple-50 to-purple-100"
+              textColor="text-purple-600"
+            />
           </div>
         </div>
       </div>
