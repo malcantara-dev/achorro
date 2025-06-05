@@ -22,15 +22,15 @@ const Hero = () => {
           
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto mb-16">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-6 w-6" />
+            <div className="relative flex items-center">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-6 w-6 z-10" />
               <input
                 type="text"
                 placeholder="Digite o nome do seu pet..."
-                className="w-full pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-full focus:border-green-500 focus:outline-none shadow-lg"
+                className="w-full pl-12 pr-32 py-4 text-lg border-2 border-gray-200 rounded-full focus:border-green-500 focus:outline-none shadow-lg"
               />
-              <Link to="/publicacoes">
-                <Button className="absolute right-2 top-2 bg-green-600 hover:bg-green-700 rounded-full px-8">
+              <Link to="/publicacoes" className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                <Button className="bg-green-600 hover:bg-green-700 rounded-full px-8">
                   Buscar
                 </Button>
               </Link>
