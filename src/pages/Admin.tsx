@@ -80,7 +80,7 @@ const Admin = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      // Fetch recent posts with user profiles
+      // Fetch recent posts with user profiles using proper JOIN
       const { data: postsData, error: postsError } = await supabase
         .from('posts')
         .select(`
@@ -89,17 +89,42 @@ const Admin = () => {
           status,
           created_at,
           user_id,
-          profiles(name)
+          profiles!posts_user_id_fkey(name)
         `)
         .order('created_at', { ascending: false })
         .limit(10);
 
       if (postsError) {
         console.error('Error fetching posts:', postsError);
-        throw postsError;
+        // If the foreign key approach fails, try without profiles
+        const { data: fallbackPostsData, error: fallbackError } = await supabase
+          .from('posts')
+          .select(`
+            id,
+            title,
+            status,
+            created_at,
+            user_id
+          `)
+          .order('created_at', { ascending: false })
+          .limit(10);
+
+        if (fallbackError) {
+          throw fallbackError;
+        }
+        
+        // Add empty profiles to match interface
+        const postsWithProfiles = fallbackPostsData?.map(post => ({
+          ...post,
+          profiles: null
+        })) || [];
+        
+        setPosts(postsWithProfiles);
+      } else {
+        setPosts(postsData || []);
       }
 
-      // Fetch recent comments with user profiles and post titles
+      // Fetch recent comments with user profiles and post titles using proper JOIN
       const { data: commentsData, error: commentsError } = await supabase
         .from('comments')
         .select(`
@@ -108,19 +133,42 @@ const Admin = () => {
           created_at,
           user_id,
           post_id,
-          profiles(name),
-          posts(title)
+          profiles!comments_user_id_fkey(name),
+          posts!comments_post_id_fkey(title)
         `)
         .order('created_at', { ascending: false })
         .limit(10);
 
       if (commentsError) {
         console.error('Error fetching comments:', commentsError);
-        throw commentsError;
-      }
+        // If the foreign key approach fails, try without profiles/posts
+        const { data: fallbackCommentsData, error: fallbackCommentsError } = await supabase
+          .from('comments')
+          .select(`
+            id,
+            content,
+            created_at,
+            user_id,
+            post_id
+          `)
+          .order('created_at', { ascending: false })
+          .limit(10);
 
-      setPosts(postsData || []);
-      setComments(commentsData || []);
+        if (fallbackCommentsError) {
+          throw fallbackCommentsError;
+        }
+        
+        // Add empty profiles and posts to match interface
+        const commentsWithData = fallbackCommentsData?.map(comment => ({
+          ...comment,
+          profiles: null,
+          posts: null
+        })) || [];
+        
+        setComments(commentsWithData);
+      } else {
+        setComments(commentsData || []);
+      }
     } catch (error) {
       console.error('Error fetching admin data:', error);
       toast({
