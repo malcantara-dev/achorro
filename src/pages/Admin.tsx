@@ -5,10 +5,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Users, FileText, MessageSquare, Shield, Search, Trash2 } from 'lucide-react';
+import { Users, FileText, MessageSquare, Shield, Trash2 } from 'lucide-react';
 import Footer from '@/components/Footer';
 import { useStats } from '@/hooks/useStats';
 import { Navigate } from 'react-router-dom';
@@ -30,21 +28,24 @@ interface Post {
   title: string;
   status: string;
   created_at: string;
+  user_id: string;
   profiles?: {
     name: string;
-  };
+  } | null;
 }
 
 interface Comment {
   id: string;
   content: string;
   created_at: string;
+  user_id: string;
+  post_id: string;
   profiles?: {
     name: string;
-  };
+  } | null;
   posts?: {
     title: string;
-  };
+  } | null;
 }
 
 const Admin = () => {
@@ -57,7 +58,6 @@ const Admin = () => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
-  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     if (!roleLoading && isAdmin) {
@@ -80,31 +80,44 @@ const Admin = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      // Fetch recent posts
-      const { data: postsData } = await supabase
+      // Fetch recent posts with user profiles
+      const { data: postsData, error: postsError } = await supabase
         .from('posts')
         .select(`
           id,
           title,
           status,
           created_at,
-          profiles!inner(name)
+          user_id,
+          profiles(name)
         `)
         .order('created_at', { ascending: false })
         .limit(10);
 
-      // Fetch recent comments
-      const { data: commentsData } = await supabase
+      if (postsError) {
+        console.error('Error fetching posts:', postsError);
+        throw postsError;
+      }
+
+      // Fetch recent comments with user profiles and post titles
+      const { data: commentsData, error: commentsError } = await supabase
         .from('comments')
         .select(`
           id,
           content,
           created_at,
-          profiles!inner(name),
-          posts!inner(title)
+          user_id,
+          post_id,
+          profiles(name),
+          posts(title)
         `)
         .order('created_at', { ascending: false })
         .limit(10);
+
+      if (commentsError) {
+        console.error('Error fetching comments:', commentsError);
+        throw commentsError;
+      }
 
       setPosts(postsData || []);
       setComments(commentsData || []);
@@ -335,7 +348,7 @@ const Admin = () => {
                         <div className="flex-1">
                           <h3 className="font-semibold text-gray-900">{post.title}</h3>
                           <p className="text-sm text-gray-600">
-                            por {post.profiles?.name} • {formatDate(post.created_at)}
+                            por {post.profiles?.name || 'Usuário'} • {formatDate(post.created_at)}
                           </p>
                         </div>
                         <div className="flex items-center space-x-3">
@@ -371,7 +384,7 @@ const Admin = () => {
                         <div className="flex-1">
                           <p className="text-gray-900">{comment.content}</p>
                           <p className="text-sm text-gray-600 mt-1">
-                            por {comment.profiles?.name} em "{comment.posts?.title}" • {formatDate(comment.created_at)}
+                            por {comment.profiles?.name || 'Usuário'} em "{comment.posts?.title || 'Post deletado'}" • {formatDate(comment.created_at)}
                           </p>
                         </div>
                         <Button
