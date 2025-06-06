@@ -2,7 +2,6 @@
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import StatsSection from "@/components/StatsSection";
-import LatestPosts from "@/components/LatestPosts";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -11,7 +10,6 @@ const Index = () => {
       <Hero />
       <StatsSection />
       <HowItWorks />
-      <LatestPosts />
       <Footer />
     </div>
   );

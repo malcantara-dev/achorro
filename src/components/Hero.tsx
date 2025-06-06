@@ -3,6 +3,7 @@ import { Search, Heart, Users, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StatCard from '@/components/StatCard';
+import LatestPosts from '@/components/LatestPosts';
 
 const Hero = () => {
   return (
@@ -53,6 +54,9 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Latest Posts Section */}
+      <LatestPosts />
 
       {/* Statistics Section */}
       <div className="bg-white py-16">
