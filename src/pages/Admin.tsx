@@ -80,7 +80,7 @@ const Admin = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      // Fetch recent posts with user profiles using proper JOIN
+      // Fetch recent posts
       const { data: postsData, error: postsError } = await supabase
         .from('posts')
         .select(`
@@ -88,43 +88,32 @@ const Admin = () => {
           title,
           status,
           created_at,
-          user_id,
-          profiles!posts_user_id_fkey(name)
+          user_id
         `)
         .order('created_at', { ascending: false })
         .limit(10);
 
       if (postsError) {
         console.error('Error fetching posts:', postsError);
-        // If the foreign key approach fails, try without profiles
-        const { data: fallbackPostsData, error: fallbackError } = await supabase
-          .from('posts')
-          .select(`
-            id,
-            title,
-            status,
-            created_at,
-            user_id
-          `)
-          .order('created_at', { ascending: false })
-          .limit(10);
-
-        if (fallbackError) {
-          throw fallbackError;
-        }
-        
-        // Add empty profiles to match interface
-        const postsWithProfiles = fallbackPostsData?.map(post => ({
-          ...post,
-          profiles: null
-        })) || [];
-        
-        setPosts(postsWithProfiles);
-      } else {
-        setPosts(postsData || []);
+        throw postsError;
       }
 
-      // Fetch recent comments with user profiles and post titles using proper JOIN
+      // Fetch profiles for posts
+      const postUserIds = postsData?.map(post => post.user_id) || [];
+      const { data: postProfiles } = await supabase
+        .from('profiles')
+        .select('id, name')
+        .in('id', postUserIds);
+
+      // Map profiles to posts
+      const postsWithProfiles: Post[] = postsData?.map(post => ({
+        ...post,
+        profiles: postProfiles?.find(profile => profile.id === post.user_id) || null
+      })) || [];
+
+      setPosts(postsWithProfiles);
+
+      // Fetch recent comments
       const { data: commentsData, error: commentsError } = await supabase
         .from('comments')
         .select(`
@@ -132,43 +121,38 @@ const Admin = () => {
           content,
           created_at,
           user_id,
-          post_id,
-          profiles!comments_user_id_fkey(name),
-          posts!comments_post_id_fkey(title)
+          post_id
         `)
         .order('created_at', { ascending: false })
         .limit(10);
 
       if (commentsError) {
         console.error('Error fetching comments:', commentsError);
-        // If the foreign key approach fails, try without profiles/posts
-        const { data: fallbackCommentsData, error: fallbackCommentsError } = await supabase
-          .from('comments')
-          .select(`
-            id,
-            content,
-            created_at,
-            user_id,
-            post_id
-          `)
-          .order('created_at', { ascending: false })
-          .limit(10);
-
-        if (fallbackCommentsError) {
-          throw fallbackCommentsError;
-        }
-        
-        // Add empty profiles and posts to match interface
-        const commentsWithData = fallbackCommentsData?.map(comment => ({
-          ...comment,
-          profiles: null,
-          posts: null
-        })) || [];
-        
-        setComments(commentsWithData);
-      } else {
-        setComments(commentsData || []);
+        throw commentsError;
       }
+
+      // Fetch profiles for comments
+      const commentUserIds = commentsData?.map(comment => comment.user_id) || [];
+      const { data: commentProfiles } = await supabase
+        .from('profiles')
+        .select('id, name')
+        .in('id', commentUserIds);
+
+      // Fetch post titles for comments
+      const commentPostIds = commentsData?.map(comment => comment.post_id) || [];
+      const { data: commentPosts } = await supabase
+        .from('posts')
+        .select('id, title')
+        .in('id', commentPostIds);
+
+      // Map profiles and posts to comments
+      const commentsWithData: Comment[] = commentsData?.map(comment => ({
+        ...comment,
+        profiles: commentProfiles?.find(profile => profile.id === comment.user_id) || null,
+        posts: commentPosts?.find(post => post.id === comment.post_id) || null
+      })) || [];
+
+      setComments(commentsWithData);
     } catch (error) {
       console.error('Error fetching admin data:', error);
       toast({
