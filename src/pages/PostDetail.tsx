@@ -10,6 +10,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { MapPin, Calendar, ArrowLeft, Edit, Trash2, Send } from 'lucide-react';
 import Footer from '@/components/Footer';
+import AdminActions from '@/components/AdminActions';
+import AdminCommentActions from '@/components/AdminCommentActions';
 import type { Database } from '@/integrations/supabase/types';
 
 type AnimalType = Database['public']['Enums']['animal_type'];
@@ -257,6 +259,14 @@ const PostDetail = () => {
     }
   };
 
+  const handlePostDelete = () => {
+    navigate('/publicacoes');
+  };
+
+  const handleCommentDelete = () => {
+    fetchComments();
+  };
+
   const canEditComment = (comment: Comment) => {
     return user && comment.user_id === user.id && post?.status !== 'owner_found';
   };
@@ -378,6 +388,15 @@ const PostDetail = () => {
                   <p className="text-gray-700 leading-relaxed">{post.description}</p>
                 </div>
 
+                {/* Admin Actions for Post */}
+                <AdminActions
+                  postId={post.id}
+                  postUserId={post.user_id}
+                  currentStatus={post.status}
+                  onDelete={handlePostDelete}
+                  className="mb-6"
+                />
+
                 {user && post.user_id === user.id && post.status === 'lost' && (
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold mb-2">Atualizar Status</h3>
@@ -463,31 +482,40 @@ const PostDetail = () => {
                           </span>
                         </div>
                         
-                        {(canEditComment(comment) || canDeleteComment(comment)) && (
-                          <div className="flex space-x-2">
-                            {canEditComment(comment) && (
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                onClick={() => {
-                                  setEditingComment(comment.id);
-                                  setEditContent(comment.content);
-                                }}
-                              >
-                                <Edit className="h-3 w-3" />
-                              </Button>
-                            )}
-                            {canDeleteComment(comment) && (
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                onClick={() => handleDeleteComment(comment.id)}
-                              >
-                                <Trash2 className="h-3 w-3" />
-                              </Button>
-                            )}
-                          </div>
-                        )}
+                        <div className="flex items-center space-x-2">
+                          {/* Admin Actions for Comments */}
+                          <AdminCommentActions
+                            commentId={comment.id}
+                            commentUserId={comment.user_id}
+                            onDelete={handleCommentDelete}
+                          />
+                          
+                          {(canEditComment(comment) || canDeleteComment(comment)) && (
+                            <div className="flex space-x-2">
+                              {canEditComment(comment) && (
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => {
+                                    setEditingComment(comment.id);
+                                    setEditContent(comment.content);
+                                  }}
+                                >
+                                  <Edit className="h-3 w-3" />
+                                </Button>
+                              )}
+                              {canDeleteComment(comment) && (
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => handleDeleteComment(comment.id)}
+                                >
+                                  <Trash2 className="h-3 w-3" />
+                                </Button>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
 
                       {editingComment === comment.id ? (

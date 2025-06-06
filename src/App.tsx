@@ -15,6 +15,7 @@ import Publications from "./pages/Publications";
 import PostDetail from "./pages/PostDetail";
 import CreatePost from "./pages/CreatePost";
 import Profile from "./pages/Profile";
+import Admin from "./pages/Admin";
 import AboutUs from "./pages/AboutUs";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
@@ -48,6 +49,14 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin" 
+          element={
+            <ProtectedRoute>
+              <Admin />
             </ProtectedRoute>
           } 
         />

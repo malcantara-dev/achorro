@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { MapPin, Calendar, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Footer from '@/components/Footer';
+import AdminActions from '@/components/AdminActions';
 import { Link } from 'react-router-dom';
 import type { Database } from '@/integrations/supabase/types';
 
@@ -181,6 +181,10 @@ const Publications = () => {
     setCurrentPage(1);
   };
 
+  const handlePostDelete = () => {
+    fetchPosts(); // Refresh the posts list
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex-1">
@@ -286,6 +290,15 @@ const Publications = () => {
                           </span>
                         </div>
                       </div>
+
+                      {/* Admin Actions */}
+                      <AdminActions
+                        postId={post.id}
+                        postUserId={post.user_id}
+                        currentStatus={post.status}
+                        onDelete={handlePostDelete}
+                        className="mt-3 mb-3"
+                      />
                       
                       <div className="mt-4">
                         <Link to={`/publicacoes/${post.id}`}>
