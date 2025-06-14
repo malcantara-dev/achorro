@@ -160,8 +160,8 @@ MIT – veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 📞 Contato
 
-- Website: [achorro.com.br](https://achorro.vercel.app)  
-- Email: contato@achorro.com.br  
+- Website: [achorro.vercel.app](https://achorro.vercel.app)  
+- Email: contato@achorro.vercel.app  
 - Instagram: [@achorro_oficial](https://instagram.com/achorro_oficial)  
 
 ---
