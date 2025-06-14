@@ -1,73 +1,172 @@
-# Welcome to your Lovable project
+# 🐾 Achorro - Ache seu pet!
 
-## Project info
+<div align="center">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+</div>
 
-**URL**: https://lovable.dev/projects/cd45747d-c37c-41df-a357-0b04c6c0c3fb
+## 📋 Sobre o Projeto
 
-## How can I edit this code?
+**Achorro** é uma plataforma web brasileira criada com o design system **Lovable**, dedicada a reconectar pets perdidos com suas famílias. Com uma interface intuitiva e moderna, permite que pessoas publiquem e encontrem animais desaparecidos em suas regiões.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🎯 Objetivos
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/cd45747d-c37c-41df-a357-0b04c6c0c3fb) and start prompting.
+- Conectar pets perdidos com seus tutores  
+- Engajar a comunidade na busca por animais  
+- Facilitar a comunicação entre usuários  
+- Gerar impacto social positivo e promover bem-estar animal  
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## ✨ Funcionalidades
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 👥 Usuários
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Publicação de pets perdidos/encontrados (com fotos e descrição)  
+- Busca por nome, local e tipo de animal  
+- Comentários e notificações  
+- Perfil de usuário com histórico  
+- Autenticação com verificação de e-mail  
 
-Follow these steps:
+### 🔧 Administradores
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Painel de controle com estatísticas  
+- Moderação de posts e comentários  
+- Gerenciamento de usuários e permissões  
+- Sistema de roles (admin, moderador, usuário)  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🛠️ Tecnologias
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+- **React**, **TypeScript**, **Vite**  
+- **Tailwind CSS**, **Shadcn/UI**, **Radix UI**, **Lucide**, **React Hook Form**  
+- **Supabase** (PostgreSQL, Auth, Storage, RLS)  
+- **ESLint**, **PostCSS**, **Zod**, **Date-fns**
+
+---
+
+## 🏗️ Arquitetura
+
+### Principais Entidades
+
+- **Posts**: informações do pet, status, localização, autor  
+- **Profiles**: nome, avatar, histórico do usuário  
+- **Comments**: comunicação entre usuários com moderação  
+- **Locations**: cidades e estados para busca geográfica  
+
+---
+
+## 🚀 Como Executar em Localhost
+
+### Pré-requisitos
+
+- Node.js 18+  
+- npm ou yarn  
+- Conta no Supabase  
+
+### Instalação
+
+```bash
+git clone https://github.com/seu-usuario/achorro.git
+cd achorro
+npm install
+```
+
+### Configuração
+
+1. Crie um projeto no Supabase  
+2. Configure `.env` com as credenciais  
+3. Execute as migrações (se houver)  
+4. Inicie o servidor:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Acesse: [http://localhost:5173](http://localhost:5173)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Scripts Disponíveis
 
-**Use GitHub Codespaces**
+```bash
+npm run dev      # Ambiente de desenvolvimento
+npm run build    # Build de produção
+npm run preview  # Preview do build
+npm run lint     # Linter
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🌐 Deploy
 
-This project is built with:
+**Recomendado:** Supabase + Vercel  
+- Conecte o repositório ao GitHub  
+- Configure variáveis no Vercel  
+- Deploy automático
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Outras opções:**  
+- Netlify  
+- GitHub Pages (SPA)  
+- Railway  
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/cd45747d-c37c-41df-a357-0b04c6c0c3fb) and click on Share -> Publish.
+## 🤝 Contribuição
 
-## Can I connect a custom domain to my Lovable project?
+1. Fork o projeto  
+2. Crie uma branch: `git checkout -b feature/SuaFeature`  
+3. Commit: `git commit -m "Adiciona SuaFeature"`  
+4. Push: `git push origin feature/SuaFeature`  
+5. Abra um Pull Request  
 
-Yes, you can!
+### Guidelines
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- Siga o padrão de código  
+- Faça commits claros  
+- Teste antes de enviar  
+- Atualize a documentação, se necessário  
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+## 📊 Estatísticas (fictícias)
+
+- 1.200+ pets reunidos  
+- 45.000+ usuários ativos  
+- 8.900+ publicações  
+- 156 cidades alcançadas  
+
+---
+
+## 🔐 Segurança
+
+- Autenticação JWT (via Supabase Auth)  
+- RLS no banco de dados  
+- Validação com Zod  
+- Sanitização de inputs  
+- HTTPS obrigatório em produção  
+
+---
+
+## 📄 Licença
+
+MIT – veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 📞 Contato
+
+- Website: [achorro.com.br](https://achorro.vercel.app)  
+- Email: contato@achorro.com.br  
+- Instagram: [@achorro_oficial](https://instagram.com/achorro_oficial)  
+
+---
+
+<div align="center">
+  <p>Feito com ❤️ para reunir famílias e pets no Brasil</p>
+  <p><a href="#top">🔝 Voltar ao topo</a></p>
+</div>
